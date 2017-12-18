@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Streaming</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/reset.css">
+  </head>
+
+
+  <body class="body">
+    <header class="header">
+
+    </header>
+
+    <section class="player">
+      <div class="plyr"></div>
+    </section>
+
+    <section class="categories">
+      <span class="catbutt">Catégories</span>
+      <div class="catlist">
+        <div class="cat">Comédie</div>
+        <div class="cat">Action</div>
+        <div class="cat">Horreur</div>
+        <div class="cat">Thriller</div>
+        <div class="cat">Anime</div>
+        <div class="cat">Documentaire</div>
+        <div class="cat">Comics</div>
+        <div class="cat">Fantastique</div>
+        <div class="cat">Court métrage</div>
+      </div>
+    </section>
+
+    <section class="movies">
+      <div class="film">
+
+      </div>
+    </section>
+
+    <script>
+    var player = document.querySelector('.player');
+    var catbutt = document.querySelector('.catbutt');
+    var categories = document.querySelector('.categories');
+    var film = document.querySelector('.film');
+
+
+    catbutt.addEventListener('click', function() {
+      categories.classList.toggle('open');
+    });
+
+    film.addEventListener('mouseover', function() {
+      film.classList.toggle('syno');
+    });
+
+    film.addEventListener('mouseout', function() {
+      film.classList.remove('syno');
+    });
+
+    // film.addEventListener('click', function() {
+    //   player.classList.toggle('block');
+    // });
+    </script>
+
+  </body>
+</html>

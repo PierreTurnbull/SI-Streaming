@@ -1,0 +1,107 @@
+.body {
+  background: rgba(0, 0, 0, 0.5);
+  height: 100vh;
+}
+
+.header {
+  background: rgba(0, 0, 0, 0.5);
+  height: 200px;
+}
+
+.player {
+  border: solid 1px #fff;
+  height: 600px;
+  display: none;
+}
+
+.block {
+  display: block;
+}
+
+.categories {
+  border: none;
+  border-bottom: solid 10px #fff;
+  height: 6.7%;
+  margin: 5% auto;
+  overflow: hidden;
+}
+
+.catbutt {
+  font-size: 100px;
+  cursor: pointer;
+}
+
+.catlist {
+  display: grid;
+  grid-template-columns: 30% 30% 30%;
+  grid-template-rows: 50% 50%;
+  grid-gap: 5px;
+  overflow: hidden;
+  margin: 5% 0 0 0;
+}
+
+.open {
+  height: 20%;
+  animation: open 1s;
+}
+
+@keyframes open {
+  0% {
+    height: 6.7%;
+  }
+
+  100% {
+    height: 20%;
+  }
+}
+
+.cat {
+  font-size: 50px;
+  cursor: pointer;
+}
+
+.movies {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  border: solid 1px #fff;
+  height: 90%;
+  margin: 5% auto;
+  overflow: hidden;
+}
+
+.film {
+  border: solid 1px #fff;
+  width: 31%;
+  height: 35%;
+  margin: 2% auto;
+  background: url(../img/matrix.jpg) no-repeat center center;
+}
+
+.syno {
+  width: 100%;
+  height: 35%;
+  animation: syno 1s;
+}
+
+@keyframes syno {
+  0% {
+    width: 31%;
+    height: 35%;
+  }
+
+  100% {
+    width: 100%;
+    height: 35%;
+  }
+}
+
+/* TABLET */
+@media (min-width: 321px) {
+
+}
+
+/* DESKTOP */
+@media (min-width: 769px) {
+
+}

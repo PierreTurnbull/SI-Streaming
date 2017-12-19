@@ -109,7 +109,12 @@ var finalDuration = parseInt(filmMinutes)*60 + parseInt(filmSeconds);
 var currentTime = Math.floor(vid.currentTime);
 var currentMinutes = Math.floor(currentTime/60); 
 var currentSeconds = Math.floor(currentTime % 60);
-document.getElementById('time').innerHTML = '<p>' + currentMinutes + ':'+ currentSeconds  +'/'+ dureeFilm  + '</p>';
+var currentSecondsString = currentSeconds.toString();
+if(currentSecondsString[1] == null || currentSecondsString[1] == undefined || currentSecondsString[1] == '' ){
+    currentSecondsString = 0 + currentSecondsString;
+}
+console.log(currentSecondsString);
+document.getElementById('time').innerHTML = '<p>' + currentMinutes + ':'+ currentSecondsString  +'/'+ dureeFilm  + '</p>';
 
 var remainingTime = finalDuration - currentTime;
 var remainingMinutes = Math.floor(remainingTime/60); 

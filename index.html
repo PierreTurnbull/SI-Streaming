@@ -7,29 +7,44 @@
     <link rel="stylesheet" href="css/reset.css">
     <script src="js/data.js"></script>
   </head>
-
-
   <body class="body">
     <header class="header">
-
     </header>
 
     <section class="player">
       <div class="plyr"></div>
     </section>
 
-    <section class="categories">
-      <span class="catbutt">Catégories</span>
-      <div class="catlist">
-        <div class="cat">Comedy</div>
-        <div class="cat">Action</div>
-        <div class="cat">Horror / Thriller</div>
-        <div class="cat">Animation</div>
-        <div class="cat">See All</div>
-      </div>
-    </section>
+    <form action="" class="search">
+      <input type="text" class="search_text" placeholder="Searh for a keyword...">
+      <input type="submit" value="search" class="search_submit">
+    </form>
+    <div class="selections_block">
+      <section class="year_container">
+        <h2 class="year_selection_title">Year</h2>
+        <ul class="year_selection_list">
+          <li class="year_selection">2012</li>
+          <li class="year_selection">2013</li>
+          <li class="year_selection">2014</li>
+          <li class="year_selection">2015</li>
+          <li class="year_selection">2016</li>
+          <li class="year_selection">2017</li>
+          <li class="year_selection">See All</li>
+        </ul>
+      </section>
+      <section class="category_container">
+        <h2 class="category_selection_title">Category</h2>
+        <ul class="category_selection_list">
+          <li class="category_selection">Comedy</li>
+          <li class="category_selection">Action</li>
+          <li class="category_selection">Horror / Thriller</li>
+          <li class="category_selection">Animation</li>
+          <li class="category_selection">See All</li>
+        </ul>
+      </section>
+    </div>
 
-    <section class="movies">
+    <section class="films">
     </section>
 
     <script src="js/script.js"></script>

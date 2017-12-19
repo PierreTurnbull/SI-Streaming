@@ -1,12 +1,22 @@
 //document.addEventListener("DOMContentLoaded", function()
 //{
-  var player = document.querySelector('.player');
-  var catbutt = document.querySelector('.catbutt');
-  var categories = document.querySelector('.categories');
-  var cat_list = document.querySelectorAll(".cat");
-  var movies = document.querySelector('.movies');
+  var search          = document.querySelector(".search");
+  var search_text     = document.querySelector(".search_text");
+  var search_submit   = document.querySelector(".search_submit");
 
-  load_films("See All");
+  var category        = document.querySelector('.category_container');
+  var category_title  = document.querySelector('.category_selection_title');
+  var category_list   = document.querySelector(".category_selection_list");
+  var category_item   = document.querySelectorAll(".category_selection");
+
+  var year            = document.querySelector('.year_container');
+  var year_title      = document.querySelector('.year_selection_title');
+  var year_list       = document.querySelector(".year_selection_list");
+  var year_item       = document.querySelectorAll(".year_selection");
+
+  var films = document.querySelector('.films');
+
+  load_films("See All", "", "");
 
   function shorten_text(str, nb)
   {
@@ -16,16 +26,16 @@
 
   function add_film(film)
   {
-    movies.innerHTML +=
+    films.innerHTML +=
     "<article class=\"film\">" +
     "<h2 class=\"film_title\">" + film.title + "</h2>" +
     "<p class=\"film_description\">" + shorten_text(film.description, 40) + "</p>";
   }
 
-  function load_films(category)
+  function load_films(category, year, keyword)
   {
-    movies.innerHTML = "";
-    if (category == "See All")
+    films.innerHTML = "";
+    if (category == "See All" || year == "See All")
     {
       for (let i = 0; i < data.films.length; i++)
       {
@@ -40,17 +50,56 @@
           add_film(data.films[i]);
       }
     }
+    if (year!= "")
+    {
+      for (let i = 0; i < data.films.length; i++)
+      {
+        if (data.films[i].year == Number(year))
+          add_film(data.films[i]);
+      }
+    }
+    if (keyword != "")
+    {
+      for (let i = 0; i < data.films.length; i++)
+      {
+        if (String(data.films[i].year).toLowerCase().search(keyword.toLowerCase()) >= 0 ||
+            data.films[i].title.toLowerCase().search(keyword.toLowerCase()) >= 0 ||
+            data.films[i].description.toLowerCase().search(keyword.toLowerCase()) >= 0 ||
+            data.films[i].author.toLowerCase().search(keyword.toLowerCase()) >= 0 ||
+            data.films[i].category.toLowerCase().search(keyword.toLowerCase()) >= 0)
+            add_film(data.films[i]);
+      }
+    }
   }
 
-  catbutt.addEventListener('click', function() {
-    categories.classList.toggle('open');
+  search.addEventListener("submit", function(event)
+  {
+    event.preventDefault();
+    if (search_text.value != "")
+      load_films("", "", search_text.value);
   });
 
-  for (let i = 0; i < cat_list.length; i++)
+  category_title.addEventListener('click', function() {
+    category.classList.toggle('open');
+  });
+
+  year_title.addEventListener('click', function() {
+    year.classList.toggle('open');
+  });
+
+  for (let i = 0; i < category_item.length; i++)
   {
-    cat_list[i].addEventListener("click", function()
+    category_item[i].addEventListener("click", function()
     {
-      load_films(cat_list[i].textContent);
+      load_films(category_item[i].textContent, "", "");
+    });
+  }
+
+  for (let i = 0; i < year_item.length; i++)
+  {
+    year_item[i].addEventListener("click", function()
+    {
+      load_films("", year_item[i].textContent, "")
     });
   }
 

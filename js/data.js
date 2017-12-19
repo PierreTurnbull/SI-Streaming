@@ -13,7 +13,7 @@ var data = {
         sub_language: 'N/A',
         rating: 4,
         category: 'Animation',
-        image_url: 'image1.jpg'
+        image_url: '../img/image1.jpg'
     }, {
         src: 'Naruto+Live+Action+(avec+Florian+Nguyen+et+Aziatomik)(720p).mp4',
         title: 'Naruto Live Action (avec Florian Nguyen et Aziatomik)',
@@ -26,7 +26,7 @@ var data = {
         sub_language: 'N/A',
         rating: 3,
         category: 'Action',
-        image_url: 'image2.jpg'
+        image_url: '../img/image2.jpg'
     }, {
         src: 'Dragon+Ball+vs+Naruto.+Anime+fight.(720p).mp4',
         title: 'Dragon Ball vs Naruto. Anime fight',
@@ -39,7 +39,7 @@ var data = {
         sub_language: 'N/A',
         rating: 5,
         category: 'Action',
-        image_url: 'image3.jpg'
+        image_url: '../img/image3.jpg'
     }, {
         src: 'Naruto+Shippuden_+Dance+of+War+-+Short+Film+(Turn+On+Subtitles)(1080p).mp4',
         title: 'Naruto Shippuden: Dance of War - Short Film',
@@ -52,7 +52,7 @@ var data = {
         sub_language: 'N/A',
         rating: 4,
         category: 'Action',
-        image_url: 'image4.jpg'
+        image_url: '../img/image4.jpg'
     }, {
         src: 'NARUTO+-+New+Movie+2018+-+Full+Trailer+AMAZING!!(720p).mp4',
         title: 'NARUTO - New Movie 2018',
@@ -65,7 +65,7 @@ var data = {
         sub_language: 'N/A',
         rating: 3,
         category: 'Action',
-        image_url: 'image5.jpg'
+        image_url: '../img/image5.jpg'
     }, {
         src: 'Naruto+The+Movie!+(Official+Fake+Trailer)(720p).mp4',
         title: 'Naruto The Movie! (Official Fake Trailer)',
@@ -78,7 +78,7 @@ var data = {
         sub_language: 'N/A',
         rating: 3,
         category: 'Comedy',
-        image_url: 'image6.jpg'
+        image_url: '../img/image6.jpg'
     }, {
         src: 'Red+Hood_+The+Fallen+-+DC+Comic+Batman+Fan+Film(720p).mp4',
         title: 'Red Hood: The Fallen - DC Comic Batman Fan Film',
@@ -91,7 +91,7 @@ var data = {
         sub_language: 'N/A',
         rating: 5,
         category: 'Action',
-        image_url: 'image7.jpg'
+        image_url: '../img/image7.jpg'
     }, {
         src: 'JUSTICE+LEAGUE_+Trinity+Force+_+DC+FAN+FILM+_(720p).mp4',
         title: 'JUSTICE LEAGUE: Trinity Force | DC FAN FILM |',
@@ -104,7 +104,7 @@ var data = {
         sub_language: 'N/A',
         rating: 2.5,
         category: 'Action',
-        image_url: 'image8.jpg'
+        image_url: '../img/image8.jpg'
     }, {
         src: 'The+Mad+Hatter+-+Fan+Film(720p).mp4',
         title: 'The Mad Hatter - Fan Film',
@@ -117,7 +117,7 @@ var data = {
         sub_language: 'N/A',
         rating: 2,
         category: 'Horror / Thriller',
-        image_url: 'image9.jpg'
+        image_url: '../img/image9.jpg'
     }, {
         src: 'The+Flash+Lite+(comedy+fan+film)(720p).mp4',
         title: 'The Flash Lite (comedy fan film)',
@@ -130,7 +130,7 @@ var data = {
         sub_language: 'N/A',
         rating: 4,
         category: 'Comedy',
-        image_url: 'image10.jpg'
+        image_url: '../img/image10.jpg'
     }, {
         src: 'Clash+at+the+Cantina+(2014)+-+Star+Wars+Fan+Film(720p).mp4',
         title: 'Clash at the Cantina (2014) - Star Wars Fan Film',
@@ -143,7 +143,7 @@ var data = {
         sub_language: 'N/A',
         rating: 4,
         category: 'Comedy',
-        image_url: 'image11.jpg'
+        image_url: '../img/image11.jpg'
     }, {
         src: 'THE+74th+HUNGER+GAMES+(SHORT+COMEDY+FAN+FILM)(720p).mp4',
         title: 'THE 74th HUNGER GAMES (SHORT COMEDY FAN FILM)',
@@ -156,7 +156,7 @@ var data = {
         sub_language: 'N/A',
         rating: 2,
         category: 'Comedy',
-        image_url: 'image12.jpg'
+        image_url: '../img/image12.jpg'
     }, {
         src: 'VICTIM+-+A+Short+Slender+Man+Horror+Film(720p).mp4',
         title: 'VICTIM - A Short Slender Man Horror Film',
@@ -169,7 +169,7 @@ var data = {
         sub_language: 'N/A',
         rating: 4,
         category: 'Horror / Thriller',
-        image_url: 'image13.jpg'
+        image_url: '../img/image13.jpg'
     }, {
         src: 'DON&#039;T+MOVE+-+A+Short+Horror+Film+(2017)(720p).mp4',
         title: 'FALLOUT - Apocalyptic Thriller Short Film',
@@ -182,7 +182,7 @@ var data = {
         sub_language: 'N/A',
         rating: 3,
         category: 'Horror / Thriller',
-        image_url: 'image14.jpg'
+        image_url: '../img/image14.jpg'
     }, {
         src: 'Dragon+Ball+Z_+Light+of+Hope+-+Pilot(720p).mp4',
         title: 'Dragon Ball Z: Light of Hope - Pilot',
@@ -195,7 +195,7 @@ var data = {
         sub_language: 'N/A',
         rating: 4,
         category: 'Action',
-        image_url: 'image15.jpg'
+        image_url: '../img/image15.jpg'
     }, {
         src: 'Attack+on+Titan+-+LEVI+vs+BEAST+TITAN+-+Fan+made+animation+-+Shingeki+no+kyojin+manga+chapter+81(480p).mp4',
         title: 'Attack on Titan - LEVI vs BEAST TITAN - Fan made animation',
@@ -208,7 +208,7 @@ var data = {
         sub_language: 'N/A',
         rating: 4,
         category: 'Animation',
-        image_url: 'image16.jpg'
+        image_url: '../img/image16.jpg'
     }, {
         src: 'Chinese+teenager+created+awesome+fight+scene+animation(536p).mp4',
         title: 'Personal Animated Short 【Heat vs Repulsion】自主制作アニメ',
@@ -221,7 +221,7 @@ var data = {
         sub_language: 'N/A',
         rating: 5,
         category: 'Animation',
-        image_url: 'image17.jpg'
+        image_url: '../img/image17.jpg'
     }, {
         src: 'SPAWN_+THE+RECALL+-+FAN+FILM(720p).mp4',
         title: 'SPAWN: THE RECALL - FAN FILM',
@@ -234,7 +234,7 @@ var data = {
         sub_language: 'N/A',
         rating: 4,
         category: 'Horror / Thriller',
-        image_url: 'image18.jpg'
+        image_url: '../img/image18.jpg'
     }, {
         src: '[Rebeler]+Madara+VS+Hashirama+-+Cosplay+Movie(720p).mp4',
         title: '[Rebeler] Madara VS Hashirama - Cosplay Movie',
@@ -247,6 +247,6 @@ var data = {
         sub_language: 'N/A',
         rating: 4,
         category: 'Action',
-        image_url: 'image19.jpg'
+        image_url: '../img/image19.jpg'
     }, ]
 };

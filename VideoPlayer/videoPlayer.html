@@ -1,0 +1,141 @@
+-<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="data.js"> </script>
+    <title>Document</title>
+</head>
+<body>
+    
+   
+    <style>
+        #one {
+            order: 0;
+        }
+        #two {
+            order: 1;
+        }
+        #three {
+            order: 2;
+        }
+        #four {
+            order: 3;
+        }
+        #five {
+            order: 4;
+        }
+        #six {
+            order: 5;
+        }
+
+    .navBar {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+    }
+
+    .containerNavBar {
+        background: black;
+        opacity: 0.4;
+        height: 70px;
+        position: absolute;
+        width: 750px;
+        z-index: 2;
+        top: 68%;
+        left: 25%; 
+    }
+
+    #after {
+        width: 50px;
+        height: 50px;
+        cursor: pointer;
+        z-index: 3;
+    }
+
+    #sound {
+        width: 50px;
+        height: 50px;
+        cursor: pointer;
+    }
+
+    #stop {
+        width: 50px;
+        height: 50px;
+        cursor: pointer;
+    }
+
+    #play {
+        width: 50px;
+        height: 50px;
+        cursor: pointer;
+    }
+    #before {
+        width: 50px;
+        height: 50px;
+        cursor: pointer;
+
+    }
+    #fullScreen {
+        width: 50px;
+        height: 50px;  
+        z-index: 3;
+        cursor: pointer;
+
+    }
+
+    #movie {
+        width: 800px;
+    }
+
+    #fullScreen:hover {
+        color: white;
+    }
+
+    .moviePlayer {
+        margin: 0px auto;
+        margin-top: 7%;
+        width: 800px;
+    }
+
+    #progressBar {
+        width: 750px;
+        height: 5px;
+    }
+
+    #time {
+        width: 50px;
+        height: 30px;
+        color: white;
+    }
+    </style>
+
+    <div class="moviePlayer">
+        
+         <div id="slideContainer">
+                        <input type="range" min="1" max="100" value="50" class="slider" id="myRange">
+                </div>
+        <div class="containerNavBar">
+                <progress  id="progressBar">
+                </progress>
+            <nav class="navBar">
+                 <div id="time"></div>
+                 <div id="one"><img src="./icon/tensec.png" id="before"> </div> 
+                 <div id="two"> <img src="./icon/play-1.png" id="play"> </div> 
+                 <div id="three"> <img src="./icon/10secmore-1.png" id="after"> </div> 
+                 <div id="four"> <img src="./icon/stop.png" id="stop"> </div> 
+                 <div id="five"> <img src="./icon/sound-1.png" id="sound"> </div>
+                 <div id="six"> <img src="./icon/fullscreen.png" id="fullScreen"> </div> 
+                  
+            </nav>
+               
+                  
+        </div>
+
+       <video id="movie"></video>  
+    </div>
+   
+    <script src="videoPlayer.js"></script>
+</body>
+</html>

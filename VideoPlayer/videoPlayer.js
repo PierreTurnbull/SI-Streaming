@@ -23,26 +23,27 @@ var after = document.getElementById('after');
 var before = document.getElementById('before');
 var fullscreen = document.getElementById('fullScreen');
 var playButton = document.getElementById('play');
-var slideContainer = document.getElementById('myRange');
+//var slideContainer = document.getElementById('myRange');
 var stopButton = document.getElementById('stop');
 var progressBar = document.getElementById('progressBar');
+var moviePlayer = document.querySelector('.moviePlayer');
 progressBar.value = 0;
 
-
+var fullscreenValue = false;
 
 // Set the slider
-slideContainer.value = 50;
+// slideContainer.value = 50;
 
 var playing = false;
 vid.volume = 0.5;
 // Fonctionnalité volume
-
+/*
 slideContainer.addEventListener('change', function(){
     var sliderValue = slideContainer.value;
     vid.volume = sliderValue*0.01;
     console.log(vid.volume);
 });
-
+*/
 
 // Fonctionnalité play
 playButton.addEventListener('click', function(){
@@ -57,6 +58,25 @@ playButton.addEventListener('click', function(){
     }
       
 });
+
+// Disparition curseur
+
+vid.addEventListener('mousemove', function(){
+
+    if(moove = true){
+      window.setTimeout(() => {
+        vid.style.cursor = 'none';
+        moove = false;
+    }, 2000);  
+    
+    }
+    if(moove = false) {
+       vid.style.cursor = 'pointer'; 
+       moove = true;
+    }
+})
+
+
 
 // Fonctionnalité Stop 
 stopButton.addEventListener('click', function(){
@@ -75,10 +95,41 @@ before.addEventListener('click', function(){
 });
 
 // Ajout de la fonctionnaités fullScreen
+
 fullscreen.addEventListener('click', function(){
-    launchIntoFullscreen(vid);
-    launchIntoFullscreen(document.documentElement);
+    if(fullscreenValue == false){
+       launchIntoFullscreen(document);
+    vid.style.width = '100%';
+    moviePlayer.style.width = '100%';
+    moviePlayer.style.height = '100%';
+    moviePlayer.style.padding = 0;
+    moviePlayer.style.margin = 0;
+    launchIntoFullscreen(document.documentElement); 
+    return fullscreenValue = true;
+    }  
+
+    if(fullscreenValue == true){
+        if (document.exitFullscreen) {
+            document.exitFullscreen();
+        }
+        else if (document.mozCancelFullScreen) {
+            document.mozCancelFullScreen();
+        }
+        else if (document.webkitCancelFullScreen) {
+            document.webkitCancelFullScreen();
+        }
+        vid.style.width = '800px';
+        moviePlayer.style.width = '800px';
+        moviePlayer.style.height = 'auto';
+        moviePlayer.style.margin = '0px auto';
+        moviePlayer.style.marginTop = '7%';
+        fullscreenValue = false;
+        }
 });
+
+
+
+
 
 function launchIntoFullscreen(element) {
     if(element.requestFullscreen) {

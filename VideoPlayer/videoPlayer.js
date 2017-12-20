@@ -73,11 +73,14 @@ if(moove = true){
 
 containernavBar.addEventListener('mouseleave', function(){
     containernavBar.style.opacity = 0; 
+    progressBar2.style.opacity = 0.6;
 })
 
 containernavBar.addEventListener('mouseenter', function(){
     containernavBar.style.opacity = 0.4; 
     containernavBar.style.display = 'block'; 
+    progressBar2.style.opacity = 0;
+    
 })
  
 vid.addEventListener('mousemove', function(){
@@ -121,6 +124,10 @@ fullscreen.addEventListener('click', function(){
     containernavBar.style.width = '95%';
     containernavBar.style.top = '90%';
     progressBar.style.width = '100%';
+    progressBar2.style.width = '100%';
+    progressBar2.style.position = 'absolute';
+    progressBar2.style.bottom = '2px';
+    // progressBar2.style.top = '100%';
    
     fullscreenValue = true;
     }  
@@ -144,6 +151,9 @@ fullscreen.addEventListener('click', function(){
         containernavBar.style.width = '750px';
         containernavBar.style.top = '495px';
         progressBar.style.width = '750px';
+        progressBar2.style.width = '748px';
+        progressBar2.style.position = 'relative';
+        progressBar2.style.bottom = 0;
         if(vx>= 100) vx = 100;
         fullscreenValue = false;
         }
@@ -199,6 +209,7 @@ function launchIntoFullscreen(element) {
   console.log('vvv : ' + vx)
   if(vx >= 100 && fullscreenValue == true ) vx = 100;
   myBar.style.width = vx+'%';
+  myBar2.style.width = vx+'%';
   
   // Durée restante du film
   // var remainingFinal = remainingMinutes + ':' + remainingSeconds;

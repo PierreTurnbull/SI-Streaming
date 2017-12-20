@@ -96,6 +96,7 @@ stopButton.addEventListener('click', function(){
     vid.pause();
     vid.currentTime = 0;
     playButton.src = './icon/play-1.png';
+    playing = false;
 });
 
 // Fonctionnalité avancer de 10s
@@ -150,10 +151,9 @@ fullscreen.addEventListener('click', function(){
 
         progressBar.style.width = '690px';
         progressBar2.style.width = '748px';
-        progressBar2.style.position = 'relative';
-        progressBar2.style.bottom = 0;
+        progressBar2.style.bottom = '24.5%';
         containernavBar.style.width = '800px';
-        containernavBar.style.top = '505px';
+        containernavBar.style.top = '500px';
         if(vx>= 100) vx = 100;
         fullscreenValue = false;
         }

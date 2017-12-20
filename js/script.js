@@ -219,11 +219,28 @@
 var films_sel = document.querySelectorAll(".film");
 var modal = document.querySelector(".modal");
 
+function play_video()
+{
+  document.querySelector(".modal_player_play").style.display = "none";
+  document.querySelector(".modal_player_img").style.display = "none";
+  // TODO: VIDEO DISPLAYING TO BE DONE
+}
+
 function close_modal()
 {
   modal.innerHTML = "";
   modal.style.display = "none";
   document.querySelector("body").style.overflowY = "scroll";
+}
+
+function put_star(nb, index)
+{
+  if      (data.films[index].rating - nb >= 0)
+    return 'img/star_full.png';
+  else if (data.films[index].rating - nb == -0.5)
+    return 'img/star_semi.png';
+  else if (data.films[index].rating - nb <= -1)
+    return 'img/star_empty.png';
 }
 
 function display_modal(index)
@@ -247,11 +264,11 @@ function display_modal(index)
         '</div>' +
       '<div class="modal_rating">' +
         '<div class="modal_rating_star_container">' +
-          '<img src="img/star.png" alt="star rating" title="Star rating" class="modal_rating_star">' +
-          '<img src="img/star.png" alt="star rating" title="Star rating" class="modal_rating_star">' +
-          '<img src="img/star.png" alt="star rating" title="Star rating" class="modal_rating_star">' +
-          '<img src="img/star.png" alt="star rating" title="Star rating" class="modal_rating_star">' +
-          '<img src="img/star.png" alt="star rating" title="Star rating" class="modal_rating_star">' +
+          '<img src="' + put_star(1, index) + '" alt="star rating" title="Star rating" class="modal_rating_star">' +
+          '<img src="' + put_star(2, index) + '" alt="star rating" title="Star rating" class="modal_rating_star">' +
+          '<img src="' + put_star(3, index) + '" alt="star rating" title="Star rating" class="modal_rating_star">' +
+          '<img src="' + put_star(4, index) + '" alt="star rating" title="Star rating" class="modal_rating_star">' +
+          '<img src="' + put_star(5, index) + '" alt="star rating" title="Star rating" class="modal_rating_star">' +
           '</div>' +
         '<div class="modal_rating_number">' + data.films[index].rating + ' / 5</div>' +
         '</div>' +
@@ -277,6 +294,10 @@ function display_modal(index)
     document.querySelector(".close_btn").addEventListener("click", function()
     {
       close_modal();
+    });
+    document.querySelector(".modal_player_play").addEventListener("click", function()
+    {
+      play_video();
     });
 }
 

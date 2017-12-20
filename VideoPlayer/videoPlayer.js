@@ -98,10 +98,6 @@ before.addEventListener('click', function(){
 });
 
 // Si la vidéo n'est pas en fullscreen
-if(fullscreenValue == false){
-    vid.style.width = '800px';
-    moviePlayer.style.width = '800px';
-}
 
 // Ajout de la fonctionnaité fullScreen
 fullscreen.addEventListener('click', function(){
@@ -130,11 +126,15 @@ fullscreen.addEventListener('click', function(){
         else if (document.webkitCancelFullScreen) {
             document.webkitCancelFullScreen();
         }
-         vid.style.width = '800px';
+        vid.style.width = '800px';
         moviePlayer.style.width = '800px';
         moviePlayer.style.height = 'auto';
         moviePlayer.style.margin = '0px auto';
         moviePlayer.style.marginTop = '7%';
+
+        containernavBar.style.width = '750px';
+        containernavBar.style.top = '495px';
+
         fullscreenValue = false;
         }
 });

@@ -2,6 +2,9 @@
 //{
 
 // ANIMATIONS
+  var loupe  = document.querySelector('.lp');
+  var look  = document.querySelector('.search');
+
   var player = document.querySelector('.player');
 
   var catbutt = document.querySelector('.catbutt');
@@ -18,6 +21,10 @@
   var movies = document.querySelector('.movies');
   var film = document.querySelectorAll('.film');
   var loadmore = document.querySelector('.loadmore');
+
+  loupe.addEventListener('click', function(){
+    look.classList.toggle('on');
+  });
 
   catbutt.addEventListener('click', function() {
     categories.classList.toggle('open');

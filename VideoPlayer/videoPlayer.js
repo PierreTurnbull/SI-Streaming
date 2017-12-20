@@ -121,12 +121,12 @@ fullscreen.addEventListener('click', function(){
     moviePlayer.style.padding = 0;
     moviePlayer.style.margin = 0;
     vid.style.width = '100%';
-    containernavBar.style.width = '95%';
-    containernavBar.style.top = '90%';
+    containernavBar.style.width = '100%';
+    containernavBar.style.top = '93.5%';
     progressBar.style.width = '100%';
     progressBar2.style.width = '100%';
     progressBar2.style.position = 'absolute';
-    progressBar2.style.bottom = '2px';
+    progressBar2.style.bottom = 0;
     // progressBar2.style.top = '100%';
    
     fullscreenValue = true;
@@ -148,12 +148,12 @@ fullscreen.addEventListener('click', function(){
         moviePlayer.style.margin = '0px auto';
         moviePlayer.style.marginTop = '7%';
 
-        containernavBar.style.width = '750px';
-        containernavBar.style.top = '495px';
-        progressBar.style.width = '750px';
+        progressBar.style.width = '690px';
         progressBar2.style.width = '748px';
         progressBar2.style.position = 'relative';
         progressBar2.style.bottom = 0;
+        containernavBar.style.width = '800px';
+        containernavBar.style.top = '505px';
         if(vx>= 100) vx = 100;
         fullscreenValue = false;
         }
@@ -172,6 +172,9 @@ function launchIntoFullscreen(element) {
       element.msRequestFullscreen();
     }
   }
+
+  // Fonctionnalité vitesse
+  
 
     // Fonctionnalité Temps
   setInterval(time, 1000);

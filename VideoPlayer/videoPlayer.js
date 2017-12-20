@@ -27,6 +27,7 @@ var playButton = document.getElementById('play');
 var stopButton = document.getElementById('stop');
 var progressBar = document.getElementById('progressBar');
 var moviePlayer = document.querySelector('.moviePlayer');
+var containernavBar = document.querySelector('.containerNavBar');
 progressBar.value = 0;
 
 var fullscreenValue = false;
@@ -59,21 +60,25 @@ playButton.addEventListener('click', function(){
       
 });
 
+var moove = true;
 // Disparition curseur
+if(moove = true){
+   window.setInterval(() => {
+    vid.style.cursor = 'none';
+    moove = false;
+    containernavBar.style.display = 'none';
+    
+
+}, 2500); 
+}
+ 
 
 vid.addEventListener('mousemove', function(){
 
-    if(moove = true){
-      window.setTimeout(() => {
-        vid.style.cursor = 'none';
-        moove = false;
-    }, 2000);  
-    
-    }
-    if(moove = false) {
+containernavBar.style.display = 'block';
        vid.style.cursor = 'pointer'; 
        moove = true;
-    }
+    
 })
 
 

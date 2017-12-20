@@ -77,7 +77,7 @@ containernavBar.addEventListener('mouseleave', function(){
 })
 
 containernavBar.addEventListener('mouseenter', function(){
-    containernavBar.style.opacity = 0.4; 
+    containernavBar.style.opacity = 0.5; 
     containernavBar.style.display = 'block'; 
     progressBar2.style.opacity = 0;
     
@@ -174,7 +174,7 @@ function launchIntoFullscreen(element) {
   }
 
   // Fonctionnalité vitesse
-  
+
 
     // Fonctionnalité Temps
   setInterval(time, 1000);

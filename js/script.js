@@ -22,7 +22,9 @@
   var films      = document.querySelectorAll('.film');
   var loadmore   = document.querySelector('.loadmore');
 
-  loupe.addEventListener('click', function(){
+
+
+  loupe.addEventListener('click', function() {
     look.classList.toggle('on');
   });
 
@@ -101,8 +103,10 @@
 
   function add_film(film)
   {
+
   films.innerHTML +=
   "<article class=\"film\">" +
+  "<img src=\""+film.image_url+"\" class=\"film_img\">" +
   "<h2 class=\"film_title\">" + film.title + "</h2>" +
   "<p class=\"film_description\">" + shorten_text(film.description, 40) + "</p>";
   }

@@ -90,15 +90,15 @@
   var category        = document.querySelector('.categories');
   var category_title  = document.querySelector('.category_selection_title');
   var category_list   = document.querySelector(".category_selection_list");
-  var category_item   = document.querySelectorAll(".category_selection");
+  var category_item   = document.querySelectorAll(".cat");
 
   var year            = document.querySelector('.year_container');
   var year_title      = document.querySelector('.year_selection_title');
   var year_list       = document.querySelector(".year_selection_list");
   var year_item       = document.querySelectorAll(".year_selection");
 
-  var movies          = document.querySelector('.movies');
-
+  var films           = document.querySelector('.movies');
+  var films_sel       = document.querySelectorAll(".film");
   load_films("See All", "", "");
 
   function shorten_text(str, nb)
@@ -107,54 +107,59 @@
   return str;
   }
 
-  function add_film(film)
+  function add_film(film, index)
   {
-
-  films.innerHTML +=
-  "<article class=\"film\">" +
-  "<img src=\""+film.image_url+"\" class=\"film_img\">" +
-  "<h2 class=\"film_title\">" + film.title + "</h2>" +
-  "<p class=\"film_description\">" + shorten_text(film.description, 40) + "</p>";
+    films.innerHTML +=
+    "<article class=\"film\" data-index=\"" + index + "\">" +
+    "<img src=\""+film.image_url+"\" class=\"film_img\">" +
+    "<h2 class=\"film_title\">" + film.title + "</h2>" +
+    "<p class=\"film_description\">" + shorten_text(film.description, 40) + "</p>";
   }
 
   function load_films(category, year, keyword)
   {
-  movies.innerHTML = "";
-  if (category == "See All" || year == "See All")
-  {
-    for (let i = 0; i < data.films.length; i++)
+    movies.innerHTML = "";
+    if (category == "See All" || year == "See All")
     {
-      add_film(data.films[i]);
+      for (let i = 0; i < data.films.length; i++)
+      {
+        add_film(data.films[i], i);
+      }
     }
-  }
-  else
-  {
-    for (let i = 0; i < data.films.length; i++)
+    else
     {
-      if (data.films[i].category == category)
-        add_film(data.films[i]);
+      for (let i = 0; i < data.films.length; i++)
+      {
+        if (data.films[i].category == category)
+          add_film(data.films[i], i);
+      }
     }
-  }
-  if (year!= "")
-  {
-    for (let i = 0; i < data.films.length; i++)
+    if (year!= "")
     {
-      if (data.films[i].year == Number(year))
-        add_film(data.films[i]);
+      for (let i = 0; i < data.films.length; i++)
+      {
+        if (data.films[i].year == Number(year))
+          add_film(data.films[i], i);
+      }
     }
-  }
-  if (keyword != "")
-  {
-    for (let i = 0; i < data.films.length; i++)
+    if (keyword != "")
     {
-      if (String(data.films[i].year).toLowerCase().search(keyword.toLowerCase()) >= 0 ||
-          data.films[i].title.toLowerCase().search(keyword.toLowerCase()) >= 0 ||
-          data.films[i].description.toLowerCase().search(keyword.toLowerCase()) >= 0 ||
-          data.films[i].author.toLowerCase().search(keyword.toLowerCase()) >= 0 ||
-          data.films[i].category.toLowerCase().search(keyword.toLowerCase()) >= 0)
-          add_film(data.films[i]);
+      for (let i = 0; i < data.films.length; i++)
+      {
+        if (String(data.films[i].year).toLowerCase().search(keyword.toLowerCase()) >= 0 ||
+            data.films[i].title.toLowerCase().search(keyword.toLowerCase()) >= 0 ||
+            data.films[i].description.toLowerCase().search(keyword.toLowerCase()) >= 0 ||
+            data.films[i].author.toLowerCase().search(keyword.toLowerCase()) >= 0 ||
+            data.films[i].category.toLowerCase().search(keyword.toLowerCase()) >= 0)
+            add_film(data.films[i], i);
+      }
     }
-  }
+    films_sel = document.querySelectorAll('.film');
+    for (let i = 0; i < films_sel.length; i++) {
+      films_sel[i].addEventListener('click', function(){
+        display_modal(Number(films_sel[i].dataset.index));
+      });
+    }
   }
 
   search.addEventListener("submit", function(event)
@@ -185,7 +190,6 @@
 
 // CLICK ON VIDEO To SHOW DESCRIPTION AND FILM
 
-var films_sel = document.querySelectorAll(".film");
 var modal = document.querySelector(".modal");
 
 function scroll_top()

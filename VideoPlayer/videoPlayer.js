@@ -1,19 +1,18 @@
-function Player (id, movie, src){
+function Player (id, movie, index){
     
 /*data.films[].forEach(function(element){
     console.log(element.src) ;
 })
 */
-var dureeFilm;
-this.src = src;
-for(var i = 0; i<19; i++){
-    if(data.films[i].src == this.src) dureeFilm = data.films[i].duration ;
-}
+var dureeFilm = data.films[index].duration ;
+
      
 
 var vid = document.getElementById(id);
 // Set the location of movie
 vid.src = './'+ movie;
+// Pour la version finale
+// vid.src = '../movies/'+ data.films[index].src
 vid.load();
 
 this.data = data;
@@ -197,6 +196,7 @@ function launchIntoFullscreen(element) {
   console.log('vvv : ' + vx)
   if(vx >= 100 ) myBar.style.width ='100%';
   myBar.style.width = vx+'%';
+  
   // Durée restante du film
   // var remainingFinal = remainingMinutes + ':' + remainingSeconds;
 
@@ -205,4 +205,4 @@ function launchIntoFullscreen(element) {
 }
 
 // 2eme argument => chemin du film
-var p = new Player('movie', 'movie.mp4','Naruto+Live+Action+(avec+Florian+Nguyen+et+Aziatomik)(720p).mp4');
+var p = new Player('movie', 'movie.mp4', 1);

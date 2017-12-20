@@ -177,7 +177,8 @@
   grid-template-columns: 1fr 1fr;
   grid-auto-columns: 1fr 1fr;
   grid-template-rows: 1fr 1fr;
-  grid-auto-rows: 1fr 1fr;
+  grid-auto-columns: 1fr;
+  grid-auto-rows: 1fr;
   grid-gap: 20px;
   overflow: hidden;
   margin: 7% 0 0 15%;
@@ -210,6 +211,8 @@
   display: grid;
   grid-template-columns: repeat(3, 32.6%);
   grid-template-rows: 50%;
+  grid-auto-columns: 100%;
+  grid-auto-rows: 50%;
   grid-auto-flow: row;
   grid-gap: 15px;
 }
@@ -306,6 +309,8 @@
     display: grid;
     grid-template-columns: 1fr 1fr;
     grid-template-rows: 1fr 1fr;
+    grid-auto-columns: 1fr;
+    grid-auto-rows: 1fr;
     grid-gap: 15px;
     overflow: hidden;
     margin: 50px 0 0 15%;
@@ -348,6 +353,8 @@
     display: grid;
     grid-template-columns: repeat(2, 45%);
     grid-template-rows: 30%;
+    grid-auto-columns: 45%;
+    grid-auto-rows: 30%;
     grid-auto-flow: row;
     grid-gap: 10px;
   }
@@ -494,7 +501,8 @@
     grid-template-columns: 15%;
     grid-auto-columns: 15%;
     grid-template-rows: 50% 50% 50%;
-    grid-auto-rows: 50% 50% 50%;
+    grid-auto-columns: 15%;
+    grid-auto-rows: 50%;
     grid-gap: 5px;
     overflow: hidden;
     margin: 6% 0 0 0;
@@ -528,4 +536,219 @@
       height: 265px;
     }
   }
+}
+
+
+
+
+
+
+
+
+/* MODAL */
+.modal
+{
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+  width: 100%;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.5);
+  overflow: auto;
+}
+
+.close_btn
+{
+  position: fixed;
+  width: 75px;
+  height: 75px;
+  right: 65px;
+  top: 50px;
+  cursor: pointer;
+}
+
+.close_btn_bar
+{
+  display: block;
+  background-color: white;
+  height: 7px;
+  width: 75px;
+}
+
+.close_btn_bar:nth-child(1)
+{
+  margin: 35px 0 0 0px;
+  transform: rotate(45deg);
+}
+
+.close_btn_bar:nth-child(2)
+{
+  margin: -7px 0 0 0px;
+  transform: rotate(-45deg);
+}
+
+.modal_container
+{
+  overflow: hidden;
+  background-color: #242c33;
+  width: 1170px;
+  margin: 0 auto;
+}
+
+.modal_player
+{
+  position: relative;
+  height: 655px;
+  background-color: black;
+}
+
+.modal_player_img
+{
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}
+
+.modal_player_play
+{
+  cursor: pointer;
+  position: absolute;
+  top: 215px;
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+}
+
+.modal_first_line
+{}
+
+.modal_title
+{
+  width: 600px;
+  margin: 47px auto 0;
+  font-size: 54px;
+  font-family: "Barlow";
+  color: rgba(255, 255, 255, 0.62);
+  font-weight: bold;
+  line-height: 1;
+  text-align: center;
+  letter-spacing: 0.07em;
+}
+
+.modal_year
+{
+  margin-top: 20px;
+  font-size: 24px;
+  font-family: "Barlow";
+  color: rgba(255, 255, 255, 0.62);
+  line-height: 0.444;
+  text-align: center;
+}
+
+.modal_rating
+{
+  margin-top: 45px;
+  display: flex;
+}
+
+.modal_rating_star_container
+{
+  opacity: 0.7;
+  margin-left: 486px;
+  width: 160px;
+  height: 23px;
+  display: flex;
+  justify-content: space-around;
+}
+
+.modal_rating_number
+{
+  margin-left: 20px;
+  font-size: 18px;
+  font-family: "Lucida Sans";
+  color: rgba(255, 255, 255, 0.502);
+  line-height: 1.5;
+}
+
+.modal_author
+{
+  margin: 16px 0 30px;
+  font-size: 20px;
+  font-family: "Barlow";
+  color: rgba(255, 255, 255, 0.702);
+  font-weight: bold;
+  line-height: 1.2;
+  text-align: center;
+}
+
+.modal_description
+{
+  width: 490px;
+  margin: 0 auto;
+  font-size: 16px;
+  font-family: "Barlow";
+  color: rgba(255, 255, 255, 0.8);
+  line-height: 1.688;
+  letter-spacing: 0.1em;
+}
+
+.modal_social
+{
+  width: 660px;
+  margin: 45px auto 0;
+  display: flex;
+  border-bottom: 2px solid #999da0;
+  justify-content: space-around;
+  padding: 0 0;
+}
+
+.modal_social_link:nth-child(1)
+{
+  margin-left: 60px;
+}
+
+.modal_social_link:nth-child(3)
+{
+  margin-right: 60px;
+}
+
+.modal_social_link
+{
+  margin-bottom: 25px;
+}
+
+.modal_playnow
+{
+  cursor: pointer;
+  display: flex;
+  margin: 54px auto 75px;
+  width: 264px;
+  height: 66px;
+  border-radius: 2px;
+  /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#51916c+0,019640+100 */
+  background: rgb(81,145,108); /* Old browsers */
+  background: -moz-linear-gradient(left, rgba(81,145,108,1) 0%, rgba(1,150,64,1) 100%); /* FF3.6-15 */
+  background: -webkit-linear-gradient(left, rgba(81,145,108,1) 0%,rgba(1,150,64,1) 100%); /* Chrome10-25,Safari5.1-6 */
+  background: linear-gradient(to right, rgba(81,145,108,1) 0%,rgba(1,150,64,1) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#51916c', endColorstr='#019640',GradientType=0 ); /* IE6-9 */
+  overflow: hidden;
+}
+
+.modal_playnow_text
+{
+  margin: 15px 0 0 30px;
+  font-size: 24px;
+  font-family: "Barlow";
+  color: rgb(255, 255, 255);
+  line-height: 1.125;
+  letter-spacing: 0.1em;
+}
+
+.modal_playnow_img
+{
+  width: 34px;
+  height: 34px;
+  margin: 17px 0 0 53px;
 }

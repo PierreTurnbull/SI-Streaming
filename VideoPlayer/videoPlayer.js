@@ -18,12 +18,11 @@ vid.load();
 
 this.data = data;
 var source  = document.createElement('src');
-var after = document.getElementById('play');
 var after = document.getElementById('after');
 var before = document.getElementById('before');
 var fullscreen = document.getElementById('fullScreen');
 var playButton = document.getElementById('play');
-//var slideContainer = document.getElementById('myRange');
+var slideContainer = document.getElementById('myRange');
 var stopButton = document.getElementById('stop');
 var progressBar = document.getElementById('progressBar');
 var moviePlayer = document.querySelector('.moviePlayer');
@@ -31,30 +30,29 @@ var containernavBar = document.querySelector('.containerNavBar');
 progressBar.value = 0;
 
 var fullscreenValue = false;
-
 // Set the slider
-// slideContainer.value = 50;
+ slideContainer.value = 50;
 
 var playing = false;
 vid.volume = 0.5;
 // Fonctionnalité volume
-/*
+
 slideContainer.addEventListener('change', function(){
     var sliderValue = slideContainer.value;
     vid.volume = sliderValue*0.01;
     console.log(vid.volume);
 });
-*/
+
 
 // Fonctionnalité play
 playButton.addEventListener('click', function(){
     if(playing == false){
       vid.play();
-    playButton.src = './icon/pause.png';  
+    playButton.src ='./icon/pause.png';  
     playing = true;
     }else {
     vid.pause();
-    playButton.src = './icon/play-1.png';
+    playButton.src ='./icon/play-1.png';
     playing = false;
     }
       
@@ -66,8 +64,9 @@ if(moove = true){
    window.setInterval(() => {
     vid.style.cursor = 'none';
     moove = false;
-    containernavBar.style.display = 'none';
     
+containernavBar.style.display = 'none'; 
+
 }, 2500); 
 }
  
@@ -98,21 +97,30 @@ before.addEventListener('click', function(){
     vid.currentTime -= 10; 
 });
 
-// Ajout de la fonctionnaités fullScreen
+// Si la vidéo n'est pas en fullscreen
+if(fullscreenValue == false){
+    vid.style.width = '800px';
+    moviePlayer.style.width = '800px';
+}
 
+// Ajout de la fonctionnaité fullScreen
 fullscreen.addEventListener('click', function(){
     if(fullscreenValue == false){
-       launchIntoFullscreen(document);
-    vid.style.width = '100%';
+    launchIntoFullscreen(document);
+    launchIntoFullscreen(document.documentElement); 
+    
     moviePlayer.style.width = '100%';
     moviePlayer.style.height = '100%';
     moviePlayer.style.padding = 0;
     moviePlayer.style.margin = 0;
-    launchIntoFullscreen(document.documentElement); 
-    return fullscreenValue = true;
+    vid.style.width = '100%';
+    containernavBar.style.width = '90%';
+    containernavBar.style.top = '90%';
+   
+    fullscreenValue = true;
     }  
 
-    if(fullscreenValue == true){
+    else {
         if (document.exitFullscreen) {
             document.exitFullscreen();
         }
@@ -122,7 +130,7 @@ fullscreen.addEventListener('click', function(){
         else if (document.webkitCancelFullScreen) {
             document.webkitCancelFullScreen();
         }
-        vid.style.width = '800px';
+         vid.style.width = '800px';
         moviePlayer.style.width = '800px';
         moviePlayer.style.height = 'auto';
         moviePlayer.style.margin = '0px auto';
@@ -145,44 +153,44 @@ function launchIntoFullscreen(element) {
     }
   }
 
-  // Fonctionnalité Temps
-setInterval(time, 1000);
-function time(){
+    // Fonctionnalité Temps
+  setInterval(time, 1000);
+  function time(){
 
-var filmDuration =  dureeFilm.split(":");
-var filmMinutes = filmDuration[0];
-var filmSeconds = filmDuration[1];
-if(filmSeconds[1] == '' || filmSeconds[1] == null || filmSeconds[1] == undefined){
-    filmSeconds += 0;
-}
-// Durée totale film
-var finalDuration = parseInt(filmMinutes)*60 + parseInt(filmSeconds);
+  var filmDuration =  dureeFilm.split(":");
+  var filmMinutes = filmDuration[0];
+  var filmSeconds = filmDuration[1];
+  if(filmSeconds[1] == '' || filmSeconds[1] == null || filmSeconds[1] == undefined){
+      filmSeconds += 0;
+  }
+  // Durée totale film
+  var finalDuration = parseInt(filmMinutes)*60 + parseInt(filmSeconds);
 
-// Durée actuelle du film
-var currentTime = Math.floor(vid.currentTime);
-var currentMinutes = Math.floor(currentTime/60); 
-var currentSeconds = Math.floor(currentTime % 60);
-var currentSecondsString = currentSeconds.toString();
-if(currentSecondsString[1] == null || currentSecondsString[1] == undefined || currentSecondsString[1] == '' ){
-    currentSecondsString = 0 + currentSecondsString;
-}
-console.log(currentSecondsString);
-document.getElementById('time').innerHTML = '<p>' + currentMinutes + ':'+ currentSecondsString  +'/'+ dureeFilm  + '</p>';
+  // Durée actuelle du film
+  var currentTime = Math.floor(vid.currentTime);
+  var currentMinutes = Math.floor(currentTime/60);
+  var currentSeconds = Math.floor(currentTime % 60);
+  var currentSecondsString = currentSeconds.toString();
+  if(currentSecondsString[1] == null || currentSecondsString[1] == undefined || currentSecondsString[1] == '' ){
+      currentSecondsString = 0 + currentSecondsString;
+  }
+  console.log(currentSecondsString);
+  document.getElementById('time').innerHTML = '<p>' + currentMinutes + ':'+ currentSecondsString  +'/'+ dureeFilm  + '</p>';
 
-var remainingTime = finalDuration - currentTime;
-var remainingMinutes = Math.floor(remainingTime/60); 
-var remainingSeconds = Math.floor(remainingTime % 60);
+  var remainingTime = finalDuration - currentTime;
+  var remainingMinutes = Math.floor(remainingTime/60);
+  var remainingSeconds = Math.floor(remainingTime % 60);
 
-// ProgressBar
-progressBar.max = finalDuration;
-progressBar.value = currentTime;
+  // ProgressBar
+  progressBar.max = finalDuration;
+  progressBar.value = currentTime;
 
-// Durée restante du film
-// var remainingFinal = remainingMinutes + ':' + remainingSeconds;
+  // Durée restante du film
+  // var remainingFinal = remainingMinutes + ':' + remainingSeconds;
 
-}
+  }
 
 }
 
 // 2eme argument => chemin du film
-var p = new Player('movie', 'movie.mp4','Dragon+Ball+vs+Naruto.+Anime+fight.(720p).mp4');
+var p = new Player('movie', 'movie.mp4','TIE+Fighter+-+short+film(720p).mp4');

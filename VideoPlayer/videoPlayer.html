@@ -8,43 +8,79 @@
     <title>Document</title>
 </head>
 <body>
-    
 
     <style>
         #one {
-            order: 0;
+            -webkit-box-ordinal-group: 1;
+                -ms-flex-order: 0;
+                    order: 0;
         }
         #two {
-            order: 1;
+            -webkit-box-ordinal-group: 2;
+                -ms-flex-order: 1;
+                    order: 1;
         }
         #three {
-            order: 2;
+            -webkit-box-ordinal-group: 3;
+                -ms-flex-order: 2;
+                    order: 2;
         }
         #four {
-            order: 3;
+            -webkit-box-ordinal-group: 4;
+                -ms-flex-order: 3;
+                    order: 3;
         }
         #five {
-            order: 4;
+            -webkit-box-ordinal-group: 5;
+                -ms-flex-order: 4;
+                    order: 4;
+            position: relative;
+        }
+        #five:hover .range_zone
+        {
+          display: block;
+        }
+        .range_zone:hover + .slider
+        {
+          display: block;
+        }
+        .range_zone:hover
+        {
+          display: block;
+        }
+        .slider:hover
+        {
+          display: block;
         }
         #six {
-            order: 5;
+            -webkit-box-ordinal-group: 6;
+                -ms-flex-order: 5;
+                    order: 5;
         }
 
     .navBar {
+        display: -webkit-box;
+        display: -ms-flexbox;
         display: flex;
-        flex-direction: row;
-        justify-content: space-around;
+        -webkit-box-orient: horizontal;
+        -webkit-box-direction: normal;
+            -ms-flex-direction: row;
+                flex-direction: row;
+        -ms-flex-pack: distribute;
+            justify-content: space-around;
     }
 
     .containerNavBar {
         background: black;
         opacity: 0.4;
-        height: 70px;
+        height: 55px;
         position: absolute;
         width: 750px;
         z-index: 2;
-        top: 68%;
-        left: 25%; 
+        top: 495px;
+        left: 0;
+        right: 0;
+        margin: 0 auto;
     }
 
     #after {
@@ -79,15 +115,13 @@
     }
     #fullScreen {
         width: 50px;
-        height: 50px;  
+        height: 50px;
         z-index: 3;
         cursor: pointer;
 
     }
 
-    #movie {
-        width: 800px;
-    }
+    
 
     #fullScreen:hover {
         color: white;
@@ -95,11 +129,12 @@
 
     .moviePlayer {
         margin: 0px auto;
-        margin-top: 7%;
-        width: 800px;
+        margin-top: 100px;
     }
 
     #progressBar {
+      position: absolute;
+      top: -5px;
         width: 750px;
         height: 3px;
     }
@@ -109,34 +144,112 @@
         height: 30px;
         color: white;
     }
+
+
+/* SLIDER */
+
+
+    .range_zone
+    {
+      display: none;
+      width: 50px;
+      height: 250px;
+      position: absolute;
+      bottom: 0px;
+    }
+
+    .slider {
+      display: none;
+      position: absolute;
+      top: -100px;
+      left: -50px;
+      -webkit-appearance: none; /* Hides the slider so that custom slider can be made */
+      width: 150px; /* Specific width is required for Firefox. */
+      height: 20px;
+      background: transparent; /* Otherwise white in Chrome */
+      margin: 0;
+      transform:rotate(-90deg);
+    }
+
+    .slider::-webkit-slider-thumb {
+      -webkit-appearance: none;
+    }
+
+    .slider:focus
+    {
+      outline: none;
+    }
+
+    .slider::-webkit-slider-thumb
+    {
+      border: 1px solid #000000;
+      height: 20px;
+      width: 20px;
+      border-radius: 100%;
+      background: #ffffff;
+    }
+
+    .slider::-moz-range-thumb {
+      border: 1px solid #000000;
+      height: 20px;
+      width: 20px;
+      border-radius: 100%;
+      background: #ffffff;
+    }
+
+    .slider::-ms-thumb {
+      border: 1px solid #000000;
+      height: 20px;
+      width: 20px;
+      border-radius: 100%;
+      background: #ffffff;
+    }
+
+    .slider::-webkit-slider-runnable-track
+    {
+      background: black;
+      border-radius: 10px;
+      cursor: pointer;
+    }
+
+    .slider::-moz-range-track {
+        width: 100%;
+        height: 20px;
+        cursor: pointer;
+        background: black;
+        border-radius: 10px;
+    }
+    .slider::-ms-track {
+        width: 100%;
+        height: 20px;
+        background: black;
+        border-radius: 10px;
+        cursor: pointer;
+    }
+
     </style>
 
     <div class="moviePlayer">
-        <!--
-         <div id="slideContainer">
-                        <input type="range" min="1" max="100" value="50" class="slider" id="myRange">
-                </div>
-            -->
-        <div class="containerNavBar">
-                <progress  id="progressBar">
-                </progress>
-            <nav class="navBar">
-                 <div id="time"></div>
-                 <div id="one"><img src="./icon/tensec.png" id="before"> </div> 
-                 <div id="two"> <img src="./icon/play-1.png" id="play"> </div> 
-                 <div id="three"> <img src="./icon/10secmore-1.png" id="after"> </div> 
-                 <div id="four"> <img src="./icon/stop.png" id="stop"> </div> 
-                 <div id="five"> <img src="./icon/sound-1.png" id="sound"> </div>
-                 <div id="six"> <img src="./icon/fullscreen.png" id="fullScreen"> </div> 
-                  
-            </nav>
-               
-                  
-        </div>
-
-       <video id="movie"></video>  
+      <div class="containerNavBar">
+        <progress id="progressBar">
+        </progress>
+        <nav class="navBar">
+          <div id="time"></div>
+          <div id="one"><img src="./icon/tensec.png" id="before"> </div>
+          <div id="two"><img src="./icon/play-1.png" id="play"> </div>
+          <div id="three"><img src="./icon/10secmore-1.png" id="after"> </div>
+          <div id="four"><img src="./icon/stop.png" id="stop"> </div>
+          <div id="five">
+            <img src="./icon/sound-1.png" id="sound">
+            <div class="range_zone"></div>
+            <input type="range" orient="vertical" min="1" max="100" class="slider" id="myRange">
+          </div>
+          <div id="six"><img src="./icon/fullscreen.png" id="fullScreen"> </div>
+        </nav>
+      </div>
+      <video id="movie"></video>
     </div>
-   
+
     <script src="videoPlayer.js"></script>
 </body>
 </html>

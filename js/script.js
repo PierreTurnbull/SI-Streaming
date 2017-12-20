@@ -219,6 +219,11 @@
 var films_sel = document.querySelectorAll(".film");
 var modal = document.querySelector(".modal");
 
+function scroll_top()
+{
+  document.querySelector(".modal").scroll(0, 0);
+}
+
 function play_video()
 {
   document.querySelector(".modal_player_play").style.display = "none";
@@ -298,6 +303,11 @@ function display_modal(index)
     document.querySelector(".modal_player_play").addEventListener("click", function()
     {
       play_video();
+    });
+    document.querySelector(".modal_playnow").addEventListener("click", function()
+    {
+      play_video();
+      scroll_top();
     });
 }
 

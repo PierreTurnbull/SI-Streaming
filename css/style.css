@@ -606,6 +606,7 @@
 
 .modal_player_play
 {
+  cursor: pointer;
   position: absolute;
   top: 215px;
   left: 0;
@@ -713,6 +714,7 @@
 
 .modal_playnow
 {
+  cursor: pointer;
   display: flex;
   margin: 54px auto 75px;
   width: 264px;

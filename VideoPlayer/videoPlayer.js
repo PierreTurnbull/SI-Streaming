@@ -141,7 +141,7 @@ fullscreen.addEventListener('click', function(){
         containernavBar.style.width = '750px';
         containernavBar.style.top = '495px';
         progressBar.style.width = '750px';
-
+        if(vx>= 100) vx =100;
         fullscreenValue = false;
         }
 });
@@ -194,7 +194,7 @@ function launchIntoFullscreen(element) {
   var vvv = finalDuration-(currentSeconds+currentMinutes*60);
   var vx = finalDuration - vvv;
   console.log('vvv : ' + vx)
-  if(vx >= 100 ) myBar.style.width ='100%';
+  if(vx >= 100 && fullscreenValue == true ) vx = 100;
   myBar.style.width = vx+'%';
   
   // Durée restante du film

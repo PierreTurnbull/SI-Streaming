@@ -33,6 +33,9 @@ var fullscreenValue = false;
 // Set the slider
  slideContainer.value = 50;
 
+
+ // Variable porcentage progress bar
+ var vx;
 var playing = false;
 vid.volume = 0.5;
 // Fonctionnalité volume
@@ -141,7 +144,7 @@ fullscreen.addEventListener('click', function(){
         containernavBar.style.width = '750px';
         containernavBar.style.top = '495px';
         progressBar.style.width = '750px';
-        if(vx>= 100) vx =100;
+        if(vx>= 100) vx = 100;
         fullscreenValue = false;
         }
 });
@@ -192,7 +195,7 @@ function launchIntoFullscreen(element) {
   progressBar.value = currentTime;
 
   var vvv = finalDuration-(currentSeconds+currentMinutes*60);
-  var vx = finalDuration - vvv;
+  vx = finalDuration - vvv;
   console.log('vvv : ' + vx)
   if(vx >= 100 && fullscreenValue == true ) vx = 100;
   myBar.style.width = vx+'%';

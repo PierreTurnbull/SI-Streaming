@@ -27,6 +27,7 @@ var stopButton = document.getElementById('stop');
 var progressBar = document.getElementById('progressBar');
 var moviePlayer = document.querySelector('.moviePlayer');
 var containernavBar = document.querySelector('.containerNavBar');
+var myBar = document.getElementById('myBar');
 progressBar.value = 0;
 
 var fullscreenValue = false;
@@ -58,22 +59,27 @@ playButton.addEventListener('click', function(){
       
 });
 
+
 var moove = true;
 // Disparition curseur
 if(moove = true){
    window.setInterval(() => {
     vid.style.cursor = 'none';
     moove = false;
-    
-containernavBar.style.display = 'none'; 
-
 }, 2500); 
 }
+
+containernavBar.addEventListener('mouseleave', function(){
+    containernavBar.style.opacity = 0; 
+})
+
+containernavBar.addEventListener('mouseenter', function(){
+    containernavBar.style.opacity = 0.4; 
+    containernavBar.style.display = 'block'; 
+})
  
 vid.addEventListener('mousemove', function(){
-
-containernavBar.style.display = 'block';
-       vid.style.cursor = 'pointer'; 
+       vid.style.cursor = 'auto'; 
        moove = true;
     
 })
@@ -110,8 +116,9 @@ fullscreen.addEventListener('click', function(){
     moviePlayer.style.padding = 0;
     moviePlayer.style.margin = 0;
     vid.style.width = '100%';
-    containernavBar.style.width = '90%';
+    containernavBar.style.width = '95%';
     containernavBar.style.top = '90%';
+    progressBar.style.width = '100%';
    
     fullscreenValue = true;
     }  
@@ -134,6 +141,7 @@ fullscreen.addEventListener('click', function(){
 
         containernavBar.style.width = '750px';
         containernavBar.style.top = '495px';
+        progressBar.style.width = '750px';
 
         fullscreenValue = false;
         }
@@ -174,7 +182,6 @@ function launchIntoFullscreen(element) {
   if(currentSecondsString[1] == null || currentSecondsString[1] == undefined || currentSecondsString[1] == '' ){
       currentSecondsString = 0 + currentSecondsString;
   }
-  console.log(currentSecondsString);
   document.getElementById('time').innerHTML = '<p>' + currentMinutes + ':'+ currentSecondsString  +'/'+ dureeFilm  + '</p>';
 
   var remainingTime = finalDuration - currentTime;
@@ -185,6 +192,11 @@ function launchIntoFullscreen(element) {
   progressBar.max = finalDuration;
   progressBar.value = currentTime;
 
+  var vvv = finalDuration-(currentSeconds+currentMinutes*60);
+  var vx = finalDuration - vvv;
+  console.log('vvv : ' + vx)
+  if(vx >= 100 ) myBar.style.width ='100%';
+  myBar.style.width = vx+'%';
   // Durée restante du film
   // var remainingFinal = remainingMinutes + ':' + remainingSeconds;
 
@@ -193,4 +205,4 @@ function launchIntoFullscreen(element) {
 }
 
 // 2eme argument => chemin du film
-var p = new Player('movie', 'movie.mp4','TIE+Fighter+-+short+film(720p).mp4');
+var p = new Player('movie', 'movie.mp4','Naruto+Live+Action+(avec+Florian+Nguyen+et+Aziatomik)(720p).mp4');

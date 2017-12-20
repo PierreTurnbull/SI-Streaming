@@ -141,9 +141,17 @@
     #progressBar {
       position: absolute;
       top: -5px;
-        width: 750px;
-        height: 3px;
+        width: 690px;
+        height: 5px;
+        color: white;
+        border-radius: 10px;
     }
+
+    #myBar {
+    width: 0%;
+    height: 5px;
+    background-color: red;
+}
 
     #time {
         width: 50px;
@@ -237,8 +245,9 @@
 
     <div class="moviePlayer">
       <div class="containerNavBar">
-        <progress id="progressBar">
-        </progress>
+        <div id="progressBar">
+            <div id="myBar"></div>
+          </div>
         <nav class="navBar">
           <div id="time"></div>
           <div id="one"><img src="./icon/tensec.png" id="before"> </div>

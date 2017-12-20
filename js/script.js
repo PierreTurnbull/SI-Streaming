@@ -19,7 +19,7 @@
   var cat_list = document.querySelectorAll(".cat");
 
   var movies = document.querySelector('.movies');
-  var film = document.querySelectorAll('.film');
+  var films = document.querySelectorAll('.film');
   var loadmore = document.querySelector('.loadmore');
 
   loupe.addEventListener('click', function(){
@@ -78,19 +78,19 @@
   var search          = document.querySelector(".search");
   var search_text     = document.querySelector(".search_text");
   var search_submit   = document.querySelector(".search_submit");
-  // var category        = document.querySelector('.categories');
-  // var category_title  = document.querySelector('.catt');
-  // var category_list   = document.querySelector(".catlist");
-  // var category_item   = document.querySelectorAll(".cat");
+  var category        = document.querySelector('.movies');
+  var category_title  = document.querySelector('.catt');
+  var category_list   = document.querySelector(".catlist");
+  var category_item   = document.querySelectorAll(".cat");
 
-  // var year            = document.querySelector('.year_container');
-  // var year_title      = document.querySelector('.year_selection_title');
-  // var year_list       = document.querySelector(".year_selection_list");
-  // var year_item       = document.querySelectorAll(".year_selection");
+  var year            = document.querySelector('.year_container');
+  var year_title      = document.querySelector('.year_selection_title');
+  var year_list       = document.querySelector(".year_selection_list");
+  var year_item       = document.querySelectorAll(".year_selection");
 
-  // var films = document.querySelector('.films');
+  var films = document.querySelector('.films');
 
-  load_films("See All");
+  load_films("See All", "", "");
 
   function shorten_text(str, nb)
   {
@@ -148,7 +148,7 @@
 
   function add_film(newfilm)
   {
-    films.innerHTML +=
+    category.innerHTML +=
     "<article class=\"film\" style=\"background:url("+newfilm.image_url+");\">" +
     "<h2 class=\"film_title\">" + newfilm.title + "</h2>" +
     "<p class=\"film_description\">" + shorten_text(newfilm.description, 40) + "</p>";
@@ -156,7 +156,7 @@
 
   function load_films(category, year, keyword)
   {
-    films.innerHTML = "";
+    category.innerHTML = "";
     if (category == "See All" || year == "See All")
     {
       for (let i = 0; i < data.films.length; i++)
@@ -184,7 +184,9 @@
     {
       for (let i = 0; i < data.films.length; i++)
       {
-        if (String(data.films[i].year).toLowerCase().search(keyword.toLowerCase()) >= 0 ||
+        if (String(data.films[i].year).toLowerCase()
+          .search(keyword.toLowerCase())
+          >= 0 ||
             data.films[i].title.toLowerCase().search(keyword.toLowerCase()) >= 0 ||
             data.films[i].description.toLowerCase().search(keyword.toLowerCase()) >= 0 ||
             data.films[i].author.toLowerCase().search(keyword.toLowerCase()) >= 0 ||

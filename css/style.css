@@ -5,7 +5,8 @@
 }
 
 .body {
-  background: rgba(2, 5, 6, 0.9);
+  background: linear-gradient(130deg, rgba(2, 5, 6, 0.9) 0%,
+   rgba(232, 235, 230, 0.9) 100%) ;
   width: 100vw;
   overflow-x: hidden;
   font-family: 'nunitoregular';
@@ -18,7 +19,7 @@
 .header {
   display: flex;
   justify-content: flex-end;
-  background: rgba(2, 5, 6, 0.9);
+  background: rgba(2, 5, 6, 0.3);
   height: 100px;
 }
 
@@ -29,10 +30,10 @@
 .search_submit {
   margin: 4px 0 0 5px;
   background: rgba(0, 0, 0, 0);
-  color: #fff;
+  color: color: rgba(255, 255, 255, 0.9);
   border: none;
-  border-bottom: 1px solid #fff;
-  border-right: 1px solid #fff;
+  border-bottom: 1px solid color: rgba(255, 255, 255, 0.9);
+  border-right: 1px solid color: rgba(255, 255, 255, 0.9);
 }
 
 .search_text {
@@ -40,9 +41,13 @@
   padding: 0 0 0 5px;
   background: rgba(0, 0, 0, 0);
   border: none;
-  border-bottom: 1px solid #fff;
-  border-left: 1px solid #fff;
+  border-bottom: 1px solid color: rgba(255, 255, 255, 0.9);
+  border-left: 1px solid color: rgba(255, 255, 255, 0.9);
   width: 118%;
+}
+
+.search_text:focus {
+  color: rgba(255, 255, 255, 0.9);
 }
 
 .lp {
@@ -86,6 +91,10 @@
   transition: ease 0.5s;
 }
 
+.navtop {
+  display: none;
+}
+
 .nav {
   display: none;
   position: fixed;
@@ -99,11 +108,17 @@
   overflow: hidden;
 }
 
+.navitm1 {
+  color: rgba(255, 255, 255, 0.9);
+  margin: 50px 10px;
+}
+
 .menu {
-  position: relative;
-  top: 0;
-  left: 0;
-  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 200px auto;
 }
 
 .on {
@@ -125,7 +140,7 @@
   color: rgba(232, 235, 230, 0.9);
   display: inline-block;
   cursor: pointer;
-  font-size: 45px;
+  font-size: 20px;
   font-weight: bold;
   margin: 0 30px 0 10px;
 }
@@ -142,9 +157,9 @@
 
 .categories, .year_container {
   border: none;
-  border-bottom: solid 5px rgba(48, 112, 141, 0.8);
-  width: 90%;
-  height: 65px;
+  border-bottom: solid 5px rgba(77, 181, 119, 0.8);
+  width: 150px;
+  height: 25px;
   margin: 5% auto;
   overflow: hidden;
   color: rgba(232, 235, 230, 0.9);
@@ -153,7 +168,7 @@
 .catbutt, .yearbutt {
   display: inline-block;
   color: rgba(232, 235, 230, 0.9);
-  font-size: 45px;
+  font-size: 20px;
   cursor: pointer;
 }
 
@@ -193,7 +208,7 @@
   overflow: hidden;
   display: grid;
   grid-template-columns: 1fr;
-  grid-template-rows: 1fr;
+  grid-template-rows: 0.5fr;
   grid-auto-flow: row;
   grid-gap: 15px;
 }
@@ -201,7 +216,7 @@
 .film {
   color: rgba(255, 255, 255, 1);
   width: 95%;
-  height: 700px;
+  height: 400px;
   cursor: pointer;
 }
 
@@ -243,24 +258,8 @@
   padding: 15px 0 0 0;
 }
 
-/* .syno {
-
-}
-
-@keyframes syno {
-  0% {
-    width: 95%;
-    height: 700px;
-  }
-
-  100% {
-    width: 150%;
-    height: 800px;
-  }
-} */
-
 /* TABLET */
-@media (min-width: 426px) {
+@media (min-width: 426px) and (max-width: 1028px) {
   .search {
     display: none;
   }
@@ -297,11 +296,27 @@
     display: flex;
   }
 
+  .catbutt, .yearbutt {
+    display: inline-block;
+    color: rgba(232, 235, 230, 0.9);
+    font-size: 20px;
+    cursor: pointer;
+  }
+
+  .catlist, .year_selection_list {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    grid-gap: 15px;
+    overflow: hidden;
+    margin: 50px 0 0 15%;
+  }
+
   .categories, .year_container {
     border: none;
-    border-bottom: solid 5px rgba(48, 112, 141, 0.8);
-    width: 260px;
-    height: 62px;
+    border-bottom: solid 5px rgba(77, 181, 119, 0.8);
+    width: 150px;
+    height: 25px;
     margin: 50px 0 0 5%;
     padding-right: 2px;
     overflow: hidden;
@@ -325,19 +340,27 @@
 
   .movies {
     height: 720px;
-    margin: 0 0 20px 20px;
+    margin: 50px 0 20px 65px;
     overflow: hidden;
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    grid-template-rows: 1fr;
+    grid-template-columns: repeat(2, 45%);
+    grid-template-rows: 30%;
     grid-auto-flow: row;
-    grid-gap: 20px;
+    grid-gap: 10px;
+  }
+
+  .film {
+    overflow: hidden;
+    border: 1px solid #fff;
+    background-size: 100%  100%;
+    color: rgba(255, 255, 255, 1);
+    cursor: pointer;
   }
 
   .burger {
     position: fixed;
     top: -75px;
-    right: -20px;
+    right: 2px;
     display: block;
     height: 10%;
     width: 4.5%;
@@ -366,12 +389,12 @@
 }
 
 /* DESKTOP */
- @media (min-width: 769px) {
+ @media (min-width: 1029px) {
    .header {
      position: relative;
      display: flex;
      justify-content: flex-end;
-     background: rgba(2, 5, 6, 0.9);
+     background: rgba(2, 5, 6, 0.3);
      height: 100px;
    }
 
@@ -391,7 +414,14 @@
 
   .navitm {
     color: rgba(255, 255, 255, 0.9);
+    padding: 0 0 10px 0;
     margin: 10px 10px;
+  }
+
+  .navitm:hover {
+    border: none;
+    border-bottom: solid 2px rgba(77, 181, 119, 0.8);
+    transition: all 0.2s ease;
   }
 
    .burger {
@@ -426,19 +456,26 @@
   .movies {
     width: 100%;
     height: 720px;
-    margin: 0 0 20px 7px;
+    margin: 100px 0 20px 50px;
     overflow: hidden;
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    grid-template-rows: 1fr;
+    grid-template-columns: repeat(3, 600px);
+    grid-template-rows: 400px;
     grid-auto-flow: row;
-    grid-gap: 20px;
+    grid-gap: 10px;
+  }
+
+  .film {
+    border: 1px solid #fff;
+    background-size: 600px 400px;
+    color: rgba(255, 255, 255, 1);
+    cursor: pointer;
   }
 
   .catlist {
     display: grid;
-    grid-template-columns: 30% 30% 30%;
-    grid-template-rows: 50% 50%;
+    grid-template-columns: 15%;
+    grid-template-rows: 50% 50% 50%;
     grid-gap: 5px;
     overflow: hidden;
     margin: 6% 0 0 0;
@@ -450,9 +487,9 @@
 
   .categories, .year_container {
     border: none;
-    border-bottom: solid 5px rgba(48, 112, 141, 0.8);
-    width: 300px;
-    height: 62px;
+    border-bottom: solid 5px rgba(77, 181, 119, 0.8);
+    width: 150px;
+    height: 25px;
     margin: 50px 0 0 5%;
     overflow: hidden;
     color: rgba(232, 235, 230, 0.9);

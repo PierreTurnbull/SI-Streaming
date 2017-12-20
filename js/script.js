@@ -49,6 +49,12 @@
 
   loadmore.addEventListener('click', function(){
     movies.style.height    = '100%';
+    for (let i = 0; document.querySelectorAll('.film')[i] != undefined; i++)
+    {
+      let tmp = document.querySelectorAll(".film")[i];
+      tmp.classList.remove("film");
+      tmp.classList.add("film");
+    }
     loadmore.style.display = 'none';
   });
 
@@ -89,7 +95,7 @@
   var year_list       = document.querySelector(".year_selection_list");
   var year_item       = document.querySelectorAll(".year_selection");
 
-  var films = document.querySelector('.movies');
+  var movies = document.querySelector('.movies');
 
   load_films("See All", "", "");
 
@@ -101,7 +107,7 @@
 
   function add_film(film)
   {
-  films.innerHTML +=
+  movies.innerHTML +=
   "<article class=\"film\">" +
   "<h2 class=\"film_title\">" + film.title + "</h2>" +
   "<p class=\"film_description\">" + shorten_text(film.description, 40) + "</p>";
@@ -109,7 +115,7 @@
 
   function load_films(category, year, keyword)
   {
-  films.innerHTML = "";
+  movies.innerHTML = "";
   if (category == "See All" || year == "See All")
   {
     for (let i = 0; i < data.films.length; i++)
@@ -197,3 +203,87 @@
   //       player.classList.toggle('block');
   //     });
   //   }
+
+
+
+
+
+
+
+
+
+
+
+// CLICK ON VIDEO To SHOW DESCRIPTION AND FILM
+
+var films_sel = document.querySelectorAll(".film");
+var modal = document.querySelector(".modal");
+
+function close_modal()
+{
+  modal.innerHTML = "";
+  modal.style.display = "none";
+  document.querySelector("body").style.overflowY = "scroll";
+}
+
+function display_modal(index)
+{
+  document.querySelector("body").style.overflow = "hidden";
+  modal.style.display = "block";
+  modal.innerHTML =
+  '<span class="close_btn">' +
+    '<span class="close_btn_bar"></span>' +
+    '<span class="close_btn_bar"></span>' +
+  '</span>' +
+  '<div class="modal_container">' +
+    '<div class="modal_player">' +
+      '<img src="' + data.films[index].image_url + '" class="modal_player_img">' +
+      '<img src="img/player_play_btn.png" title="Watch now!" class="modal_player_play">' +
+      '</div>' +
+    '<div class="modal_info">' +
+      '<div class="modal_first_line">' +
+        '<h2 class="modal_title">' + data.films[index].title + '</h2>' +
+        '<p class="modal_year">' + data.films[index].year + '</p>' +
+        '</div>' +
+      '<div class="modal_rating">' +
+        '<div class="modal_rating_star_container">' +
+          '<img src="img/star.png" alt="star rating" title="Star rating" class="modal_rating_star">' +
+          '<img src="img/star.png" alt="star rating" title="Star rating" class="modal_rating_star">' +
+          '<img src="img/star.png" alt="star rating" title="Star rating" class="modal_rating_star">' +
+          '<img src="img/star.png" alt="star rating" title="Star rating" class="modal_rating_star">' +
+          '<img src="img/star.png" alt="star rating" title="Star rating" class="modal_rating_star">' +
+          '</div>' +
+        '<div class="modal_rating_number">' + data.films[index].rating + ' / 5</div>' +
+        '</div>' +
+      '<div class="modal_author">By ' + data.films[index].author + '</div>' +
+      '<div class="modal_description">' + data.films[index].description + '</div>' +
+      '<div class="modal_social">' +
+        '<a class="modal_social_link" href="' + data.films[index].author_url + '">' +
+          '<img class="modal_social_img" src="img/social_logo.png" alt="social logo" title="Youtube"></img>' +
+        '</a>' +
+        '<a class="modal_social_link" href="' + data.films[index].author_url + '">' +
+          '<img class="modal_social_img" src="img/social_logo2.png" alt="social logo" title="Facebook"></img>' +
+        '</a>' +
+        '<a class="modal_social_link" href="' + data.films[index].author_url + '">' +
+          '<img class="modal_social_img" src="img/social_logo3.png" alt="social logo" title="Tipeee"></img>' +
+        '</a>' +
+        '</div>' +
+        '<div class="modal_playnow">' +
+          '<p class="modal_playnow_text">PLAY NOW</p>' +
+          '<img src="img/playnow_btn.png" alt="" class="modal_playnow_img">' +
+        '</div>' +
+      '</div>' +
+    '</div>';
+    document.querySelector(".close_btn").addEventListener("click", function()
+    {
+      close_modal();
+    });
+}
+
+for (let i = 0; i < films_sel.length; i++)
+{
+  films_sel[i].addEventListener("click", function()
+  {
+    display_modal(i);
+  });
+}

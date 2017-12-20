@@ -2,25 +2,25 @@
 //{
 
 // ANIMATIONS
-  var loupe  = document.querySelector('.lp');
-  var look  = document.querySelector('.search');
+  var loupe      = document.querySelector('.lp');
+  var look       = document.querySelector('.search');
 
-  var player = document.querySelector('.player');
+  var player     = document.querySelector('.player');
 
-  var catbutt = document.querySelector('.catbutt');
-  var yearbutt = document.querySelector('.yearbutt');
+  var catbutt    = document.querySelector('.catbutt');
+  var yearbutt   = document.querySelector('.yearbutt');
 
-  var arrow = document.querySelector('.arrow');
-  var arrow2 = document.querySelector('.arrow2');
+  var arrow      = document.querySelector('.arrow');
+  var arrow2     = document.querySelector('.arrow2');
 
   var categories = document.querySelector('.categories');
-  var yearcont = document.querySelector('.year_container');
+  var yearcont   = document.querySelector('.year_container');
 
-  var cat_list = document.querySelectorAll(".cat");
+  var cat_list   = document.querySelectorAll(".cat");
 
-  var movies = document.querySelector('.movies');
-  var films = document.querySelectorAll('.film');
-  var loadmore = document.querySelector('.loadmore');
+  var movies     = document.querySelector('.movies');
+  var films      = document.querySelectorAll('.film');
+  var loadmore   = document.querySelector('.loadmore');
 
   loupe.addEventListener('click', function(){
     look.classList.toggle('on');
@@ -48,16 +48,16 @@
   });
 
   loadmore.addEventListener('click', function(){
-    movies.style.height = '100%';
+    movies.style.height    = '100%';
     loadmore.style.display = 'none';
   });
 
     var burger = document.querySelector('.burger');
-    var bar0 = document.querySelector('.bar0');
-    var bar1 = document.querySelector('.bar1');
-    var bar2 = document.querySelector('.bar2');
-    var nav = document.querySelector('.nav');
-    var body = document.querySelector('.body');
+    var bar0   = document.querySelector('.bar0');
+    var bar1   = document.querySelector('.bar1');
+    var bar2   = document.querySelector('.bar2');
+    var nav    = document.querySelector('.nav');
+    var body   = document.querySelector('.body');
 
     burger.addEventListener('click', function() {
       nav.classList.toggle('on');
@@ -78,148 +78,96 @@
   var search          = document.querySelector(".search");
   var search_text     = document.querySelector(".search_text");
   var search_submit   = document.querySelector(".search_submit");
-  var category        = document.querySelector('.movies');
-  var category_title  = document.querySelector('.catt');
-  var category_list   = document.querySelector(".catlist");
-  var category_item   = document.querySelectorAll(".cat");
+
+  var category        = document.querySelector('.categories');
+  var category_title  = document.querySelector('.category_selection_title');
+  var category_list   = document.querySelector(".category_selection_list");
+  var category_item   = document.querySelectorAll(".category_selection");
 
   var year            = document.querySelector('.year_container');
   var year_title      = document.querySelector('.year_selection_title');
   var year_list       = document.querySelector(".year_selection_list");
   var year_item       = document.querySelectorAll(".year_selection");
 
-  var films = document.querySelector('.films');
+  var films = document.querySelector('.movies');
 
   load_films("See All", "", "");
 
   function shorten_text(str, nb)
   {
-    str = str.slice(0, nb).concat("...");
-    return str;
+  str = str.slice(0, nb).concat("...");
+  return str;
   }
 
-  function add_film(newfilm)
+  function add_film(film)
   {
-    movies.innerHTML +=
-    "<article class=\"film\" style=\"background:url("+newfilm.image_url+");\">" +
-    "<h2 class=\"film_title\">" + newfilm.title + "</h2>" +
-    "<p class=\"film_description\">" + shorten_text(newfilm.description, 40) + "</p>";
-  }
-
-  function load_films(category)
-  {
-    movies.innerHTML = "";
-    if (category == "See All")
-    {
-      for (let i = 0; i < data.films.length; i++)
-      {
-        add_film(data.films[i]);
-      }
-    }
-    else
-    {
-      for (let i = 0; i < data.films.length; i++)
-      {
-        if (data.films[i].category == category)
-          add_film(data.films[i]);
-      }
-    }
-  }
-
-  for (let i = 0; i < cat_list.length; i++)
-  {
-    cat_list[i].addEventListener("click", function()
-    {
-      load_films(cat_list[i].textContent);
-    });
-  }
-
-
-
-
-
-  load_films("See All", "", "");
-
-  function shorten_text(str, nb)
-  {
-    str = str.slice(0, nb).concat("...");
-    return str;
-  }
-
-  function add_film(newfilm)
-  {
-    category.innerHTML +=
-    "<article class=\"film\" style=\"background:url("+newfilm.image_url+");\">" +
-    "<h2 class=\"film_title\">" + newfilm.title + "</h2>" +
-    "<p class=\"film_description\">" + shorten_text(newfilm.description, 40) + "</p>";
+  films.innerHTML +=
+  "<article class=\"film\">" +
+  "<h2 class=\"film_title\">" + film.title + "</h2>" +
+  "<p class=\"film_description\">" + shorten_text(film.description, 40) + "</p>";
   }
 
   function load_films(category, year, keyword)
   {
-    category.innerHTML = "";
-    if (category == "See All" || year == "See All")
+  films.innerHTML = "";
+  if (category == "See All" || year == "See All")
+  {
+    for (let i = 0; i < data.films.length; i++)
     {
-      for (let i = 0; i < data.films.length; i++)
-      {
+      add_film(data.films[i]);
+    }
+  }
+  else
+  {
+    for (let i = 0; i < data.films.length; i++)
+    {
+      if (data.films[i].category == category)
         add_film(data.films[i]);
-      }
     }
-    else
+  }
+  if (year!= "")
+  {
+    for (let i = 0; i < data.films.length; i++)
     {
-      for (let i = 0; i < data.films.length; i++)
-      {
-        if (data.films[i].category == category)
+      if (data.films[i].year == Number(year))
+        add_film(data.films[i]);
+    }
+  }
+  if (keyword != "")
+  {
+    for (let i = 0; i < data.films.length; i++)
+    {
+      if (String(data.films[i].year).toLowerCase().search(keyword.toLowerCase()) >= 0 ||
+          data.films[i].title.toLowerCase().search(keyword.toLowerCase()) >= 0 ||
+          data.films[i].description.toLowerCase().search(keyword.toLowerCase()) >= 0 ||
+          data.films[i].author.toLowerCase().search(keyword.toLowerCase()) >= 0 ||
+          data.films[i].category.toLowerCase().search(keyword.toLowerCase()) >= 0)
           add_film(data.films[i]);
-      }
     }
-    if (year!= "")
-    {
-      for (let i = 0; i < data.films.length; i++)
-      {
-        if (data.films[i].year == Number(year))
-          add_film(data.films[i]);
-      }
-    }
-    if (keyword != "")
-    {
-      for (let i = 0; i < data.films.length; i++)
-      {
-        if (String(data.films[i].year).toLowerCase()
-          .search(keyword.toLowerCase())
-          >= 0 ||
-            data.films[i].title.toLowerCase().search(keyword.toLowerCase()) >= 0 ||
-            data.films[i].description.toLowerCase().search(keyword.toLowerCase()) >= 0 ||
-            data.films[i].author.toLowerCase().search(keyword.toLowerCase()) >= 0 ||
-            data.films[i].category.toLowerCase().search(keyword.toLowerCase()) >= 0)
-            add_film(data.films[i]);
-      }
-    }
+  }
   }
 
   search.addEventListener("submit", function(event)
   {
-    event.preventDefault();
-    if (search_text.value != "")
-      load_films("", "", search_text.value);
+  event.preventDefault();
+  if (search_text.value != "")
+    load_films("", "", search_text.value);
   });
-
-
-
 
   for (let i = 0; i < category_item.length; i++)
   {
-    category_item[i].addEventListener("click", function()
-    {
-      load_films(category_item[i].textContent, "", "");
-    });
+  category_item[i].addEventListener("click", function()
+  {
+    load_films(category_item[i].textContent, "", "");
+  });
   }
 
   for (let i = 0; i < year_item.length; i++)
   {
-    year_item[i].addEventListener("click", function()
-    {
-      load_films("", year_item[i].textContent, "")
-    });
+  year_item[i].addEventListener("click", function()
+  {
+    load_films("", year_item[i].textContent, "")
+  });
   }
 // FILTER END
 

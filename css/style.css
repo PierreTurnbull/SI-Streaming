@@ -204,24 +204,22 @@
 
 .movies {
   height: 720px;
-  margin: 0 0 20px 15px;
+  width: 100%;
+  margin: 0 0 0 10px;
   overflow: hidden;
   display: grid;
-  grid-template-columns: 1fr;
-  grid-template-rows: 0.5fr;
+  grid-template-columns: 100%;
+  grid-template-rows: 50%;
   grid-auto-flow: row;
   grid-gap: 15px;
 }
 
 .film {
-  color: rgba(255, 255, 255, 1);
-  width: 95%;
-  height: 400px;
   cursor: pointer;
 }
 
 .film:hover {
-  filter: opacity(50%);
+  filter: opacity(70%);
 }
 
 .film:hover::after {
@@ -229,8 +227,9 @@
   justify-content: space-around;
   align-items: center;
   content: "+";
+  color: rgba(255, 0, 0, 0.9);
   font-size: 200px;
-  margin-top: 200px;
+  margin-top: 100px;
   opacity: 1;
   z-index: 10;
 }
@@ -390,12 +389,21 @@
 
 /* DESKTOP */
  @media (min-width: 1029px) {
+   .body {
+     background: linear-gradient(130deg, rgba(2, 5, 6, 0.9) 0%,
+      rgba(232, 235, 230, 0.9) 100%) ;
+     width: 100%;
+     overflow-x: hidden;
+     font-family: 'nunitoregular';
+   }
+
    .header {
      position: relative;
      display: flex;
      justify-content: flex-end;
      background: rgba(2, 5, 6, 0.3);
      height: 100px;
+     width: 100%;
    }
 
   .navtop {
@@ -454,12 +462,12 @@
    }
 
   .movies {
-    width: 100%;
+    width: 80%;
     height: 720px;
-    margin: 100px 0 20px 50px;
+    margin: 100px 0 20px 11.5%;
     overflow: hidden;
     display: grid;
-    grid-template-columns: repeat(3, 600px);
+    grid-template-columns: repeat(3, 32%);
     grid-template-rows: 400px;
     grid-auto-flow: row;
     grid-gap: 10px;

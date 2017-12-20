@@ -68,11 +68,9 @@ if(moove = true){
     moove = false;
     containernavBar.style.display = 'none';
     
-
 }, 2500); 
 }
  
-
 vid.addEventListener('mousemove', function(){
 
 containernavBar.style.display = 'block';
@@ -87,6 +85,7 @@ containernavBar.style.display = 'block';
 stopButton.addEventListener('click', function(){
     vid.pause();
     vid.currentTime = 0;
+    playButton.src = './icon/play-1.png';
 });
 
 // Fonctionnalité avancer de 10s
@@ -131,8 +130,6 @@ fullscreen.addEventListener('click', function(){
         fullscreenValue = false;
         }
 });
-
-
 
 
 

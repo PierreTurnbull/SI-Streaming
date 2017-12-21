@@ -2,6 +2,9 @@
 //{
 
 // ANIMATIONS
+  var logo       = document.querySelector('.logo');
+  var logo2      = document.querySelector('.logo2');
+
   var loupe      = document.querySelector('.lp');
   var look       = document.querySelector('.search');
 
@@ -21,6 +24,22 @@
   var movies     = document.querySelector('.movies');
   var films      = document.querySelectorAll('.film');
   var loadmore   = document.querySelector('.loadmore');
+
+  // logo.addEventListener('mouseenter', function() {
+  //   logo2.classList.add('on');
+  // });
+  //
+  // logo.addEventListener('mouseleave', function() {
+  //   logo2.classList.remove('on');
+  // });
+  //
+  // logo2.addEventListener('mouseenter', function() {
+  //   logo.classList.add('on');
+  // });
+  //
+  // logo2.addEventListener('mouseleave', function() {
+  //   logo.classList.remove('on');
+  // });
 
 
 

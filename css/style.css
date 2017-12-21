@@ -6,7 +6,7 @@
 
 
 .body {
-  background: rgba(60, 66, 72, 0.9);
+  background: rgba(0, 0, 0, 0.9);
    width: 100vw;
   overflow-x: hidden;
   font-family: 'barlowregular';
@@ -29,6 +29,16 @@
   left: 20px;
   width: 112px;
   height: 77px;
+  display: block;
+}
+
+.logo2 {
+  position: absolute;
+  top: 27px;
+  left: 4%;
+  width: 168px;
+  height: 100px;
+  display: none;
 }
 
 .search {
@@ -45,6 +55,7 @@
 }
 
 .search_text {
+  outline: none;
   margin: 38px 0 0 0;
   padding: 0 0 0 5px;
   background: rgba(0, 0, 0, 0);
@@ -59,7 +70,7 @@
 }
 
 .lp {
-  margin: 33px 100px 0 0;
+  margin: 33px 120px 0 0;
   width: 20px;
   height: 20px;
   cursor: pointer;
@@ -164,11 +175,23 @@
   }
 }
 
-.categories, .year_container {
+.categories {
   border: none;
   border-bottom: solid 5px rgba(77, 181, 119, 0.8);
   width: 150px;
   height: 25px;
+  font-size: 13px;
+  margin: 5% auto;
+  overflow: hidden;
+  color: rgba(232, 235, 230, 0.9);
+}
+
+.year_container {
+  border: none;
+  border-bottom: solid 5px rgba(77, 181, 119, 0.8);
+  width: 150px;
+  height: 25px;
+  font-size: 13px;
   margin: 5% auto;
   overflow: hidden;
   color: rgba(232, 235, 230, 0.9);
@@ -190,7 +213,7 @@
   grid-auto-rows: 1fr;
   grid-gap: 20px;
   overflow: hidden;
-  margin: 7% 0 0 15%;
+  margin: 12% 0 0 15%;
 }
 
 .open {
@@ -209,7 +232,7 @@
 }
 
 .cat {
-  font-size: 20px;
+  font-size: 13px;
   cursor: pointer;
   height: 55px;
 }
@@ -217,14 +240,15 @@
 .movies {
    display: flex;
    flex-wrap: wrap;
-   height: 647px;
+   height: 655px;
    overflow: hidden;
-   margin: 75px 0 100px 1%;
+   margin: 75px 0 100px 8%;
 }
 
 .film_img {
   width: 100%;
   height: 250px;
+  box-shadow: 5px 5px 10px 1px rgba(0, 0, 0, .4);
 }
 
 .film {
@@ -233,24 +257,11 @@
   width: 95%;
 }
 
-.film:hover {
-  filter: opacity(70%);
-}
-
-.film:hover::after {
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-  content: "+";
-  color: rgba(255, 0, 0, 0.9);
-  font-size: 200px;
-  margin-top: -240px;
-  opacity: 1;
-  z-index: 10;
-}
-
 .film_title
 {
+  padding: 9px 0 0 10px;
+  font-family: "barlowregular";
+  color: rgba(255, 255, 255, 0.8);
   font-size: 20px;
 }
 
@@ -264,7 +275,8 @@
   cursor: pointer;
   display: flex;
   justify-content: center;
-  border: solid 1px rgba(232, 235, 230, 0.9);
+  border: solid 1px rgba(77, 181, 119, 0.8);
+  color: rgba(255, 255, 255, 0.8);
   height: 30px;
   width: 100px;
   margin: -72px auto 30px auto;
@@ -289,7 +301,7 @@
   position: fixed;
   width: 75px;
   height: 75px;
-  right: -35px;
+  right: 7%;
   top: -15px;
   cursor: pointer;
   z-index: 100;
@@ -506,7 +518,7 @@
   }
 
   .lp {
-    margin: 35px 131px 0 0;
+    margin: 35px 170px 0 0;
     width: 20px;
     height: 20px;
     cursor: pointer;
@@ -521,7 +533,7 @@
     flex-wrap: wrap;
     height: 690px;
     overflow: hidden;
-    margin: 75px 0 100px 2.5%;
+    margin: 75px -5% 100px 4.5%;
   }
 
   .modal_container {
@@ -631,7 +643,7 @@
     height: 10%;
     width: 4.5%;
     color: rgba(255, 255, 255, 0.7);
-    margin: 35px 2% 0 0;
+    margin: 35px 7% 0 0;
     z-index: 2;
     cursor: pointer;
   }
@@ -657,12 +669,33 @@
 /* DESKTOP */
  @media (min-width: 1029px) {
   .body {
-    background: rgba(60, 66, 72, 0.9);
+    background: rgba(0, 0, 0, 0.9);
     background-repeat: no-repeat;
     width: 100%;
     overflow-x: hidden;
     font-family: 'barlowregular';
   }
+
+  .logo {
+    position: absolute;
+    top: 27px;
+    left: 20px;
+    width: 112px;
+    height: 77px;
+    display: block;
+    /* z-index: 50; */
+  }
+
+  .logo2 {
+    position: absolute;
+    top: 27px;
+    left: 4%;
+    width: 168px;
+    height: 100px;
+    display: none;
+    /* z-index: 20; */
+  }
+
 
   .player {
      width: 500px;
@@ -682,7 +715,7 @@
   .navtop {
     position: absolute;
     top: 30px;
-    right: 50px;
+    right: 153px;
     display: flex;
   }
 
@@ -695,6 +728,7 @@
 
   .navitm {
     color: rgba(255, 255, 255, 0.9);
+    font-size: 20px;
     padding: 0 0 10px 0;
     margin: 10px 10px;
   }
@@ -728,7 +762,7 @@
    }
 
    .lp {
-     margin: 162px 8% 0 0;
+     margin: 162px 9% 0 0;
      width: 25px;
      height: 25px;
      opacity: 0.3;
@@ -738,36 +772,66 @@
    .movies {
     display: flex;
     flex-wrap: wrap;
-    height: 859px;
+    height: 740px;
     width: 100%;
     overflow: hidden;
-    margin: 100px 5% 0 6.5%;
+    margin: 100px 1% 0 4%;
   }
+
+  .loadmore {
+   cursor: pointer;
+   display: flex;
+   justify-content: center;
+   border: solid 1px rgba(77, 181, 119, 0.8);
+   color: rgba(255, 255, 255, 0.8);
+   height: 30px;
+   width: 100px;
+   margin: -55px auto 30px auto;
+   padding: 15px 0 0 0;
+ }
 
    .film {
     width: 26%;
-    height: 350px;
+    height: 275px;
     background-size: 600px 400px;
     color: rgba(255, 255, 255, 1);
     cursor: pointer;
     margin: 30px 0 50px 60px;
+    transition: all 0.3s ease;
+  }
+
+  .film:hover {
+    filter: opacity(75%)
+  }
+
+  .film:hover::after {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    content: "+";
+    color: rgba(255, 255, 255, 0.9);
+    font-size: 200px;
+    margin-top: -50%;
+    opacity: 1;
+    z-index: 10;
+    box-shadow: 10px -10px 50px 40px rgba(0, 0, 0, 0.2);
   }
 
   .catlist {
     display: grid;
     grid-template-columns: 15%;
-    grid-auto-columns: 15%;
+    grid-auto-columns: 15% px;
     grid-template-rows: 50% 50% 50%;
     grid-auto-columns: 15%;
     grid-auto-rows: 50%;
     grid-gap: 5px;
     overflow: hidden;
-    margin: 6% 0 0 0;
+    margin: 12% 0 0 35%;
   }
 
   .containers {
     display: flex;
-    margin-left: 3%;
+    margin-left: 2.5%;
   }
 
   .categories, .year_container {

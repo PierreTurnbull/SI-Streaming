@@ -384,9 +384,14 @@ var fullscreenValue = false;
  slideContainer.value = 50;
 
 
+
  // Variable porcentage progress bar
  var vx;
-var playing = false;
+ document.querySelector(".modal_player_play").addEventListener('click', function(){
+   vid.play();
+   playButton.src ='./icon/pause.png';
+ })
+var playing = true;
 vid.volume = 0.5;
 // Fonctionnalité volume
 

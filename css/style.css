@@ -1146,7 +1146,7 @@ display: flex;
 
 .containerNavBar {
   background: black;
-  opacity: 0.5;
+  opacity: 0;
   height: 55px;
   position: absolute;
   width: 1170px;

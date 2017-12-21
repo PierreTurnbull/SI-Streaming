@@ -256,6 +256,7 @@ function close_modal()
   modal.innerHTML = "";
   modal.style.display = "none";
   document.querySelector("body").style.overflowY = "scroll";
+  clearInterval(int);
 }
 
 function put_star(nb, index)
@@ -377,6 +378,7 @@ for (let i = 0; i < films_sel.length; i++)
 
 
 
+var int;
 
 function Player (id, index){
 
@@ -543,8 +545,6 @@ fullscreen.addEventListener('click', function(){
         }
 });
 
-
-
 function launchIntoFullscreen(element) {
     if(element.requestFullscreen) {
       element.requestFullscreen();
@@ -561,7 +561,7 @@ function launchIntoFullscreen(element) {
 
 
     // Fonctionnalité Temps
-  setInterval(time, 1000);
+  int = setInterval(time, 1000);
   function time(){
 
   var filmDuration =  dureeFilm.split(":");

@@ -249,38 +249,39 @@ function display_modal(index)
   document.querySelector("body").style.overflow = "hidden";
   modal.style.display = "block";
   modal.innerHTML =
-  '<div class="moviePlayer">' +
-    '<div class="containerNavBar">' +
-      '<div id="progressBar">' +
-        '<div id="myBar"></div>' +
-      '</div>' +
-      '<nav class="navBar">' +
-        '<div id="time"></div>' +
-        '<div id="one"><img src="./icon/tensec.png" id="before"> </div>' +
-        '<div id="two"><img src="./icon/play-1.png" id="play"> </div>' +
-        '<div id="three"><img src="./icon/10secmore-1.png" id="after"> </div>' +
-        '<div id="four"><img src="./icon/stop.png" id="stop"> </div>' +
-        '<div id="five">' +
-          '<img src="./icon/sound-1.png" id="sound">' +
-          '<div class="range_zone"></div>' +
-          '<input type="range" orient="vertical" min="1" max="100" class="slider" id="myRange">' +
-        '</div>' +
-        '<div id="six"><img src="./icon/fullscreen.png" id="fullScreen"></div>' +
-      '</nav>' +
-    '</div>' +
-    '<div id="progressBar2">' +
-      '<div id="myBar2"></div>' +
-    '</div>' +
-    '<div class="black_bg"></div>' +
-    '<video id="movie"></video>' +
-  '</div>' +
-  /* END OF PLAYER */
   '<span class="close_btn">' +
     '<span class="close_btn_bar"></span>' +
     '<span class="close_btn_bar"></span>' +
   '</span>' +
   '<div class="modal_container">' +
     '<div class="modal_player">' +
+    /* */
+    '<div class="moviePlayer">' +
+      '<div class="containerNavBar">' +
+        '<div id="progressBar">' +
+          '<div id="myBar"></div>' +
+        '</div>' +
+        '<nav class="navBar">' +
+          '<div id="time"></div>' +
+          '<div id="one"><img src="./icon/tensec.png" id="before"> </div>' +
+          '<div id="two"><img src="./icon/play-1.png" id="play"> </div>' +
+          '<div id="three"><img src="./icon/10secmore-1.png" id="after"> </div>' +
+          '<div id="four"><img src="./icon/stop.png" id="stop"> </div>' +
+          '<div id="five">' +
+            '<img src="./icon/sound-1.png" id="sound">' +
+            '<div class="range_zone"></div>' +
+            '<input type="range" orient="vertical" min="1" max="100" class="slider" id="myRange">' +
+          '</div>' +
+          '<div id="six"><img src="./icon/fullscreen.png" id="fullScreen"></div>' +
+        '</nav>' +
+      '</div>' +
+      '<div id="progressBar2">' +
+        '<div id="myBar2"></div>' +
+      '</div>' +
+      '<div class="black_bg"></div>' +
+      '<video id="movie"></video>' +
+    '</div>' +
+    /* */
       '<img src="' + data.films[index].image_url + '" class="modal_player_img">' +
       '<img src="img/player_play_btn.png" title="Watch now!" class="modal_player_play">' +
     '</div>' +

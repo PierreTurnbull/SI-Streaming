@@ -650,3 +650,8 @@ function launchIntoFullscreen(element) {
     }
   }
 }
+
+document.querySelector(".navitm").addEventListener("click", function()
+{
+  load_films("See All", "", "");
+});

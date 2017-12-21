@@ -600,14 +600,16 @@
 .modal_player_img
 {
   position: absolute;
+  z-index: 2;
   width: 100%;
-  height: 100%;
+  height: 658px;
 }
 
 .modal_player_play
 {
   cursor: pointer;
   position: absolute;
+  z-index: 3;
   top: 215px;
   left: 0;
   right: 0;
@@ -820,23 +822,23 @@ display: flex;
 }
 
 .containerNavBar {
-background: black;
-opacity: 0.5;
-height: 55px;
-position: absolute;
-width: 800px;
-z-index: 2;
-top: 494px;
-left: 0;
-right: 0;
-margin: 0 auto;
+  background: black;
+  opacity: 0.5;
+  height: 55px;
+  position: absolute;
+  width: 1170px;
+  z-index: 2;
+  top: 603px;
+  left: 0;
+  right: 0;
+  margin: 0 auto;
 }
 
 #after {
-width: 50px;
-height: 50px;
-cursor: pointer;
-z-index: 3;
+  width: 50px;
+  height: 50px;
+  cursor: pointer;
+  z-index: 3;
 }
 
 #sound {
@@ -871,46 +873,57 @@ cursor: pointer;
 
 }
 
-
-
 #fullScreen:hover, #play:hover, #stop:hover, #before:hover, #after:hover, #play:hover, #sound:hover   {
 color: white;
 opacity: 0.3;
 }
 
+.black_bg
+{
+  display: none;
+  position: fixed;
+  z-index: -1;
+  top: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: black;
+}
 
 .moviePlayer {
-margin: 0px auto;
-margin-top: 100px;
-width: 800px;
+  position: absolute;
+  z-index: 1;
+  left: 0;
+  right: 0;
+  margin: 0px auto;
+  width: 1170px;
 }
 
 #movie {
-width: 800px;
+  width: 1170px;
 }
 
 #progressBar {
-position: absolute;
-top: -5px;
-width: 748px;
-height: 5px;
-color: white;
-border-radius: 10px;
+  position: absolute;
+  width: 1170px;
+  height: 5px;
+  color: white;
+  border-radius: 10px;
 }
 
 #myBar {
-width: 0%;
-height: 5px;
-background-color: red;
+  width: 0%;
+  height: 5px;
+  background-color: red;
 }
+
 #progressBar2 {
-position: absolute;
-z-index: 3;
-bottom: 25.35%;
-width: 748px;
-height: 5px;
-color: white;
-border-radius: 10px;
+  position: absolute;
+  top: 653px;
+  z-index: 3;
+  width: 1170px;
+  height: 5px;
+  color: white;
+  border-radius: 10px;
 }
 
 #myBar2 {

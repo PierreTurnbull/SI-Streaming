@@ -175,25 +175,25 @@
 
   search.addEventListener("submit", function(event)
   {
-  event.preventDefault();
-  if (search_text.value != "")
-    load_films("", "", search_text.value);
-  });
+    event.preventDefault();
+    if (search_text.value != "")
+      load_films("", "", search_text.value);
+    });
 
-  for (let i = 0; i < category_item.length; i++)
-  {
-  category_item[i].addEventListener("click", function()
-  {
-    load_films(category_item[i].textContent, "", "");
-  });
-  }
+    for (let i = 0; i < category_item.length; i++)
+    {
+    category_item[i].addEventListener("click", function()
+    {
+      load_films(category_item[i].textContent, "", "");
+    });
+    }
 
-  for (let i = 0; i < year_item.length; i++)
-  {
-  year_item[i].addEventListener("click", function()
-  {
-    load_films("", year_item[i].textContent, "")
-  });
+    for (let i = 0; i < year_item.length; i++)
+    {
+    year_item[i].addEventListener("click", function()
+    {
+      load_films("", year_item[i].textContent, "")
+    });
   }
 // FILTER END
 
@@ -295,6 +295,7 @@ function display_modal(index)
     '<div id="progressBar2">' +
       '<div id="myBar2"></div>' +
     '</div>' +
+    '<div class="black_bg"></div>' +
     '<video id="movie"></video>' +
   '</div>' +
   /* END OF PLAYER */
@@ -361,7 +362,7 @@ for (let i = 0; i < films_sel.length; i++)
   films_sel[i].addEventListener("click", function()
   {
     display_modal(i);
-    Player(i);
+    Player("movie", i);
   });
 }
 
@@ -391,7 +392,7 @@ var vid = document.getElementById(id);
 // Set the location of movie
 
 // Pour la version finale
- vid.src = '../movies/'+ data.films[index].src
+vid.src = 'movies/'+ data.films[index].src
 vid.load();
 
 this.data = data;
@@ -401,6 +402,7 @@ var before = document.getElementById('before');
 var fullscreen = document.getElementById('fullScreen');
 var playButton = document.getElementById('play');
 var slideContainer = document.getElementById('myRange');
+var sound = document.getElementById('sound');
 var stopButton = document.getElementById('stop');
 var progressBar = document.getElementById('progressBar');
 var moviePlayer = document.querySelector('.moviePlayer');
@@ -422,7 +424,12 @@ vid.volume = 0.5;
 slideContainer.addEventListener('change', function(){
     var sliderValue = slideContainer.value;
     vid.volume = sliderValue*0.01;
-    console.log(vid.volume);
+    console.log(vid.volume)
+    if(vid.volume <= 0.01){
+       sound.src = './icon/nosound.png';
+     } else {
+       sound.src = './icon/sound-1.png';
+     }
 });
 
 
@@ -492,17 +499,20 @@ fullscreen.addEventListener('click', function(){
     launchIntoFullscreen(document);
     launchIntoFullscreen(document.documentElement);
 
+    document.querySelector(".black_bg").style.display = "block";
     moviePlayer.style.width = '100%';
-    moviePlayer.style.height = '100%';
+    moviePlayer.style.height = Number(moviePlayer.style.width) * (2 / 3);
+    moviePlayer.style.overflow = "hidden";
     moviePlayer.style.padding = 0;
     moviePlayer.style.margin = 0;
     vid.style.width = '100%';
+    // vid.style.top = Number(moviePlayer.style.height) * ;
     containernavBar.style.width = '100%';
     containernavBar.style.top = '93.5%';
     progressBar.style.width = '100%';
     progressBar2.style.width = '100%';
     progressBar2.style.position = 'absolute';
-    progressBar2.style.bottom = 0;
+    progressBar2.style.bottom =  "0";
     // progressBar2.style.top = '100%';
 
     fullscreenValue = true;
@@ -518,17 +528,16 @@ fullscreen.addEventListener('click', function(){
         else if (document.webkitCancelFullScreen) {
             document.webkitCancelFullScreen();
         }
-        vid.style.width = '800px';
-        moviePlayer.style.width = '800px';
+        document.querySelector(".black_bg").style.display = "none";
+        vid.style.width = '1170px';
+        moviePlayer.style.width = '1170px';
         moviePlayer.style.height = 'auto';
         moviePlayer.style.margin = '0px auto';
-        moviePlayer.style.marginTop = '7%';
 
-        progressBar.style.width = '690px';
-        progressBar2.style.width = '748px';
-        progressBar2.style.bottom = '24.5%';
-        containernavBar.style.width = '800px';
-        containernavBar.style.top = '500px';
+        progressBar.style.width = '1170px';
+        progressBar2.style.width = '1170px';
+        containernavBar.style.width = '1170px';
+        containernavBar.style.top = '603px';
         if(vx>= 100) vx = 100;
         fullscreenValue = false;
         }
@@ -582,12 +591,12 @@ function launchIntoFullscreen(element) {
   progressBar.max = finalDuration;
   progressBar.value = currentTime;
 
-  var vvv = finalDuration-(currentSeconds+currentMinutes*60);
+  var vvv = finalDuration-currentTime;
   vx = finalDuration - vvv;
-  console.log('vvv : ' + vx)
   if(vx >= 100 && fullscreenValue == true ) vx = 100;
   myBar.style.width = vx+'%';
   myBar2.style.width = vx+'%';
+  console.log(currentTime)
 
   // Durée restante du film
   // var remainingFinal = remainingMinutes + ':' + remainingSeconds;
@@ -595,6 +604,3 @@ function launchIntoFullscreen(element) {
   }
 
 }
-
-// 2eme argument => chemin du film
-var p = new Player('movie', 1);

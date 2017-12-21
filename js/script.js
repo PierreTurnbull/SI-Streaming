@@ -25,25 +25,15 @@
   var films      = document.querySelectorAll('.film');
   var loadmore   = document.querySelector('.loadmore');
 
-  logo.addEventListener('mouseenter', function() {
-    logo2.classList.add('on');
+  logo.addEventListener('mouseover', function() {
+    logo2.style.display = "block";
     logo.style.display = "none";
   });
 
-  logo.addEventListener('mouseleave', function() {
-    logo2.classList.remove('on');
+  logo2.addEventListener('mouseout', function() {
+    logo2.style.display = "none";
     logo.style.display = "block";
   });
-
-  // logo2.addEventListener('mouseenter', function() {
-  //   logo.classList.add('on');
-  // });
-  //
-  // logo2.addEventListener('mouseleave', function() {
-  //   logo.classList.remove('on');
-  // });
-
-
 
   loupe.addEventListener('click', function() {
     look.classList.toggle('on');

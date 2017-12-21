@@ -640,6 +640,8 @@ function launchIntoFullscreen(element) {
         vid.currentTime -= 10;
       else if (event.keyCode == 32)
       {
+        if (event.keyCode == 32)
+          event.preventDefault();
         if(playing == false){
           vid.play();
         playButton.src ='./icon/pause.png';

@@ -1212,6 +1212,11 @@ opacity: 0.3;
   background-color: black;
 }
 
+.black_bg:hover + .modal_container .containerNavBar
+{
+  display: block;
+}
+
 .moviePlayer {
   position: absolute;
   z-index: 1;
@@ -1256,7 +1261,7 @@ background-color: red;
 }
 
 #time {
-width: 50px;
+width: 110px;
 height: 30px;
 color: white;
 margin-top: 15px;

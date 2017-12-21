@@ -345,7 +345,6 @@ function display_modal(index)
 
 
 
-
 var int;
 
 function Player (id, index){
@@ -465,6 +464,46 @@ before.addEventListener('click', function(){
 
 // Ajout de la fonctionnaité fullScreen
 fullscreen.addEventListener('click', function(){
+
+            function exitHandler()
+            {
+              setTimeout(function(){
+
+                window.onresize = null;
+                  if (document.exitFullscreen) {
+                      document.exitFullscreen();
+                  }
+                  else if (document.mozCancelFullScreen) {
+                      document.mozCancelFullScreen();
+                  }
+                  else if (document.webkitCancelFullScreen) {
+                      document.webkitCancelFullScreen();
+                  }
+                    document.querySelector(".black_bg").style.display = "none";
+                    moviePlayer.style.position = "absolute";
+                    moviePlayer.style.width = "100%";
+                    moviePlayer.style.top = "0";
+
+                    vid.style.width = '100%';
+                    // vid.style.top = Number(moviePlayer.style.height) * ;
+                    containernavBar.style.width = '1170px';
+                    containernavBar.style.top = "603px";
+                    progressBar.style.width = '100%';
+                    progressBar2.style.width = "100%";
+                    progressBar2.style.position = 'absolute';
+                    progressBar2.style.top = "653px";
+
+                    document.querySelector(".close_btn").style.display = "block";
+                  if(vx>= 100) vx = 100;
+                  fullscreenValue = false;
+                  document.removeEventListener('fullscreenchange', exitHandler);
+                  document.removeEventListener('webkitfullscreenchange', exitHandler);
+                  document.removeEventListener('mozfullscreenchange', exitHandler);
+                  document.removeEventListener('MSFullscreenChange', exitHandler);
+
+              }, 300)
+            }
+
     if(fullscreenValue == false){
     launchIntoFullscreen(document);
     launchIntoFullscreen(document.documentElement);
@@ -486,11 +525,17 @@ fullscreen.addEventListener('click', function(){
       vid.style.width = '100%';
       // vid.style.top = Number(moviePlayer.style.height) * ;
       containernavBar.style.width = '100%';
-      containernavBar.style.top = '91%';
+      containernavBar.style.top = window.innerWidth * 0.56 - 51 + "px";
       progressBar.style.width = '100%';
-      progressBar2.style.width = '100%';
+      progressBar2.style.width = "100%";
       progressBar2.style.position = 'absolute';
-      progressBar2.style.top = (window.innerHeight - (window.innerWidth * 0.56)) / 2 + 650 + "px";
+      progressBar2.style.top = window.innerWidth * 0.56 - 2 + "px";
+
+      document.querySelector(".close_btn").style.display = "none";
+      document.addEventListener('fullscreenchange', exitHandler);
+      document.addEventListener('webkitfullscreenchange', exitHandler);
+      document.addEventListener('mozfullscreenchange', exitHandler);
+      document.addEventListener('MSFullscreenChange', exitHandler);
       // progressBar2.style.top = '100%';
     }
 
@@ -508,20 +553,29 @@ fullscreen.addEventListener('click', function(){
         else if (document.webkitCancelFullScreen) {
             document.webkitCancelFullScreen();
         }
-        document.querySelector(".black_bg").style.display = "none";
-        vid.style.width = '1170px';
-        moviePlayer.style.width = '1170px';
-        moviePlayer.style.height = 'auto';
-        moviePlayer.style.margin = '0px auto';
+          document.querySelector(".black_bg").style.display = "none";
+          moviePlayer.style.position = "absolute";
+          moviePlayer.style.width = "100%";
+          moviePlayer.style.top = "0";
 
-        progressBar.style.width = '1170px';
-        progressBar2.style.width = '1170px';
-        containernavBar.style.width = '1170px';
-        containernavBar.style.top = '603px';
+          vid.style.width = '100%';
+          // vid.style.top = Number(moviePlayer.style.height) * ;
+          containernavBar.style.width = '1170px';
+          containernavBar.style.top = "603px";
+          progressBar.style.width = '100%';
+          progressBar2.style.width = "100%";
+          progressBar2.style.position = 'absolute';
+          progressBar2.style.top = "653px";
+
+          document.querySelector(".close_btn").style.display = "block";
         if(vx>= 100) vx = 100;
         fullscreenValue = false;
-        }
-});
+        document.removeEventListener('fullscreenchange', exitHandler);
+        document.removeEventListener('webkitfullscreenchange', exitHandler);
+        document.removeEventListener('mozfullscreenchange', exitHandler);
+        document.removeEventListener('MSFullscreenChange', exitHandler);
+      }
+    });
 
 function launchIntoFullscreen(element) {
     if(element.requestFullscreen) {
@@ -539,14 +593,14 @@ function launchIntoFullscreen(element) {
 
 
     // Fonctionnalité Temps
-  int = setInterval(time, 1000);
+  int = setInterval(time, 15);
   function time(){
 
-  var filmDuration =  dureeFilm.split(":");
-  var filmMinutes = filmDuration[0];
-  var filmSeconds = filmDuration[1];
-  if(filmSeconds[1] == '' || filmSeconds[1] == null || filmSeconds[1] == undefined){
-      filmSeconds += 0;
+    var filmDuration =  dureeFilm.split(":");
+    var filmMinutes = filmDuration[0];
+    var filmSeconds = filmDuration[1];
+    if(filmSeconds[1] == '' || filmSeconds[1] == null || filmSeconds[1] == undefined){
+        filmSeconds += 0;
   }
   // Durée totale film
   var finalDuration = parseInt(filmMinutes)*60 + parseInt(filmSeconds);
@@ -559,7 +613,7 @@ function launchIntoFullscreen(element) {
   if(currentSecondsString[1] == null || currentSecondsString[1] == undefined || currentSecondsString[1] == '' ){
       currentSecondsString = 0 + currentSecondsString;
   }
-  document.getElementById('time').innerHTML = '<p>' + currentMinutes + ':'+ currentSecondsString  +'/'+ dureeFilm  + '</p>';
+  document.getElementById('time').innerHTML = '<p>' + currentMinutes + ':'+ currentSecondsString  + ' / ' + dureeFilm  + '</p>';
 
   var remainingTime = finalDuration - currentTime;
   var remainingMinutes = Math.floor(remainingTime/60);
@@ -578,6 +632,24 @@ function launchIntoFullscreen(element) {
   // Durée restante du film
   // var remainingFinal = remainingMinutes + ':' + remainingSeconds;
 
+    document.onkeydown = function(event)
+    {
+      if (event.keyCode == 39)
+        vid.currentTime += 10;
+      else if (event.keyCode == 37)
+        vid.currentTime -= 10;
+      else if (event.keyCode == 32)
+      {
+        if(playing == false){
+          vid.play();
+        playButton.src ='./icon/pause.png';
+        playing = true;
+        }else {
+        vid.pause();
+        playButton.src ='./icon/play-1.png';
+        playing = false;
+        }
+      }
+    }
   }
-
 }

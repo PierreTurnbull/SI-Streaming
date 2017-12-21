@@ -527,10 +527,13 @@ fullscreen.addEventListener('click', function(){
       progressBar2.style.top = window.innerWidth * 0.56 - 2 + "px";
 
       document.querySelector(".close_btn").style.display = "none";
-      document.addEventListener('fullscreenchange', exitHandler);
-      document.addEventListener('webkitfullscreenchange', exitHandler);
-      document.addEventListener('mozfullscreenchange', exitHandler);
-      document.addEventListener('MSFullscreenChange', exitHandler);
+      setTimeout(function()
+      {
+        document.addEventListener('fullscreenchange', exitHandler);
+        document.addEventListener('webkitfullscreenchange', exitHandler);
+        document.addEventListener('mozfullscreenchange', exitHandler);
+        document.addEventListener('MSFullscreenChange', exitHandler);
+      }, 1000);
       // progressBar2.style.top = '100%';
     }
 

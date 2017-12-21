@@ -745,3 +745,265 @@
   height: 34px;
   margin: 17px 0 0 53px;
 }
+
+
+
+
+
+
+
+/* VIDEO PLAYER */
+
+
+
+
+
+#one {
+    -webkit-box-ordinal-group: 1;
+        -ms-flex-order: 0;
+            order: 0;
+}
+#two {
+    -webkit-box-ordinal-group: 2;
+        -ms-flex-order: 1;
+            order: 1;
+}
+#three {
+    -webkit-box-ordinal-group: 3;
+        -ms-flex-order: 2;
+            order: 2;
+}
+#four {
+    -webkit-box-ordinal-group: 4;
+        -ms-flex-order: 3;
+            order: 3;
+}
+#five {
+    -webkit-box-ordinal-group: 5;
+        -ms-flex-order: 4;
+            order: 4;
+    position: relative;
+}
+#five:hover .range_zone
+{
+  display: block;
+}
+.range_zone:hover + .slider
+{
+  display: block;
+}
+.range_zone:hover
+{
+  display: block;
+}
+.slider:hover
+{
+  display: block;
+}
+#six {
+    -webkit-box-ordinal-group: 6;
+        -ms-flex-order: 5;
+            order: 5;
+}
+
+.navBar {
+display: -webkit-box;
+display: -ms-flexbox;
+align-items: center;
+display: flex;
+-webkit-box-orient: horizontal;
+-webkit-box-direction: normal;
+    -ms-flex-direction: row;
+        flex-direction: row;
+-ms-flex-pack: distribute;
+    justify-content: space-around;
+}
+
+.containerNavBar {
+background: black;
+opacity: 0.5;
+height: 55px;
+position: absolute;
+width: 800px;
+z-index: 2;
+top: 494px;
+left: 0;
+right: 0;
+margin: 0 auto;
+}
+
+#after {
+width: 50px;
+height: 50px;
+cursor: pointer;
+z-index: 3;
+}
+
+#sound {
+width: 50px;
+height: 50px;
+cursor: pointer;
+}
+
+#stop {
+width: 58px;
+height: 58px;
+cursor: pointer;
+}
+
+#play {
+width: 50px;
+height: 50px;
+cursor: pointer;
+transform: rotate(180deg);
+}
+#before {
+width: 50px;
+height: 50px;
+cursor: pointer;
+
+}
+#fullScreen {
+width: 50px;
+height: 50px;
+z-index: 3;
+cursor: pointer;
+
+}
+
+
+
+#fullScreen:hover, #play:hover, #stop:hover, #before:hover, #after:hover, #play:hover, #sound:hover   {
+color: white;
+opacity: 0.3;
+}
+
+
+.moviePlayer {
+margin: 0px auto;
+margin-top: 100px;
+width: 800px;
+}
+
+#movie {
+width: 800px;
+}
+
+#progressBar {
+position: absolute;
+top: -5px;
+width: 748px;
+height: 5px;
+color: white;
+border-radius: 10px;
+}
+
+#myBar {
+width: 0%;
+height: 5px;
+background-color: red;
+}
+#progressBar2 {
+position: absolute;
+z-index: 3;
+bottom: 25.35%;
+width: 748px;
+height: 5px;
+color: white;
+border-radius: 10px;
+}
+
+#myBar2 {
+width: 0%;
+height: 5px;
+background-color: red;
+}
+
+#time {
+width: 50px;
+height: 30px;
+color: white;
+margin-top: 15px;
+}
+
+
+/* SLIDER */
+
+
+.range_zone
+{
+display: none;
+width: 50px;
+height: 250px;
+position: absolute;
+bottom: 0px;
+}
+
+.slider {
+display: none;
+position: absolute;
+top: -100px;
+left: -50px;
+-webkit-appearance: none; /* Hides the slider so that custom slider can be made */
+width: 150px; /* Specific width is required for Firefox. */
+height: 20px;
+background: transparent; /* Otherwise white in Chrome */
+margin: 0;
+transform:rotate(-90deg);
+}
+
+.slider::-webkit-slider-thumb {
+-webkit-appearance: none;
+}
+
+.slider:focus
+{
+outline: none;
+}
+
+.slider::-webkit-slider-thumb
+{
+border: 1px solid #000000;
+height: 20px;
+width: 20px;
+border-radius: 100%;
+background: #ffffff;
+}
+
+.slider::-moz-range-thumb {
+border: 1px solid #000000;
+height: 20px;
+width: 20px;
+border-radius: 100%;
+background: #ffffff;
+}
+
+.slider::-ms-thumb {
+border: 1px solid #000000;
+height: 20px;
+width: 20px;
+border-radius: 100%;
+background: #ffffff;
+}
+
+.slider::-webkit-slider-runnable-track
+{
+background: black;
+border-radius: 10px;
+cursor: pointer;
+}
+
+.slider::-moz-range-track {
+width: 100%;
+height: 20px;
+cursor: pointer;
+background: black;
+border-radius: 10px;
+}
+.slider::-ms-track {
+width: 100%;
+height: 20px;
+background: black;
+border-radius: 10px;
+cursor: pointer;
+}

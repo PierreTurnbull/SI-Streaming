@@ -150,6 +150,26 @@
           data.films[i].category.toLowerCase().search(keyword.toLowerCase()) >= 0)
           add_film(data.films[i]);
     }
+    if (year!= "")
+    {
+      for (let i = 0; i < data.films.length; i++)
+      {
+        if (data.films[i].year == Number(year))
+          add_film(data.films[i]);
+      }
+    }
+    if (keyword != "")
+    {
+      for (let i = 0; i < data.films.length; i++)
+      {
+        if (String(data.films[i].year).toLowerCase().search(keyword.toLowerCase()) >= 0 ||
+            data.films[i].title.toLowerCase().search(keyword.toLowerCase()) >= 0 ||
+            data.films[i].description.toLowerCase().search(keyword.toLowerCase()) >= 0 ||
+            data.films[i].author.toLowerCase().search(keyword.toLowerCase()) >= 0 ||
+            data.films[i].category.toLowerCase().search(keyword.toLowerCase()) >= 0)
+            add_film(data.films[i]);
+      }
+    }
   }
   }
 
@@ -253,6 +273,31 @@ function display_modal(index)
   document.querySelector("body").style.overflow = "hidden";
   modal.style.display = "block";
   modal.innerHTML =
+  '<div class="moviePlayer">' +
+    '<div class="containerNavBar">' +
+      '<div id="progressBar">' +
+        '<div id="myBar"></div>' +
+      '</div>' +
+      '<nav class="navBar">' +
+        '<div id="time"></div>' +
+        '<div id="one"><img src="./icon/tensec.png" id="before"> </div>' +
+        '<div id="two"><img src="./icon/play-1.png" id="play"> </div>' +
+        '<div id="three"><img src="./icon/10secmore-1.png" id="after"> </div>' +
+        '<div id="four"><img src="./icon/stop.png" id="stop"> </div>' +
+        '<div id="five">' +
+          '<img src="./icon/sound-1.png" id="sound">' +
+          '<div class="range_zone"></div>' +
+          '<input type="range" orient="vertical" min="1" max="100" class="slider" id="myRange">' +
+        '</div>' +
+        '<div id="six"><img src="./icon/fullscreen.png" id="fullScreen"></div>' +
+      '</nav>' +
+    '</div>' +
+    '<div id="progressBar2">' +
+      '<div id="myBar2"></div>' +
+    '</div>' +
+    '<video id="movie"></video>' +
+  '</div>' +
+  /* END OF PLAYER */
   '<span class="close_btn">' +
     '<span class="close_btn_bar"></span>' +
     '<span class="close_btn_bar"></span>' +
@@ -319,3 +364,237 @@ for (let i = 0; i < films_sel.length; i++)
     Player(i);
   });
 }
+
+
+
+
+
+
+/* PLAYER VIDEO */
+
+
+
+
+
+
+function Player (id, index){
+
+/*data.films[].forEach(function(element){
+    console.log(element.src) ;
+})
+*/
+var dureeFilm = data.films[index].duration ;
+
+
+
+var vid = document.getElementById(id);
+// Set the location of movie
+
+// Pour la version finale
+ vid.src = '../movies/'+ data.films[index].src
+vid.load();
+
+this.data = data;
+var source  = document.createElement('src');
+var after = document.getElementById('after');
+var before = document.getElementById('before');
+var fullscreen = document.getElementById('fullScreen');
+var playButton = document.getElementById('play');
+var slideContainer = document.getElementById('myRange');
+var stopButton = document.getElementById('stop');
+var progressBar = document.getElementById('progressBar');
+var moviePlayer = document.querySelector('.moviePlayer');
+var containernavBar = document.querySelector('.containerNavBar');
+var myBar = document.getElementById('myBar');
+progressBar.value = 0;
+
+var fullscreenValue = false;
+// Set the slider
+ slideContainer.value = 50;
+
+
+ // Variable porcentage progress bar
+ var vx;
+var playing = false;
+vid.volume = 0.5;
+// Fonctionnalité volume
+
+slideContainer.addEventListener('change', function(){
+    var sliderValue = slideContainer.value;
+    vid.volume = sliderValue*0.01;
+    console.log(vid.volume);
+});
+
+
+// Fonctionnalité play
+playButton.addEventListener('click', function(){
+    if(playing == false){
+      vid.play();
+    playButton.src ='./icon/pause.png';
+    playing = true;
+    }else {
+    vid.pause();
+    playButton.src ='./icon/play-1.png';
+    playing = false;
+    }
+
+});
+
+
+var moove = true;
+// Disparition curseur
+if(moove = true){
+   window.setInterval(() => {
+    vid.style.cursor = 'none';
+    moove = false;
+  }, 2500);
+}
+
+containernavBar.addEventListener('mouseleave', function(){
+    containernavBar.style.opacity = 0;
+    progressBar2.style.opacity = 0.6;
+})
+
+containernavBar.addEventListener('mouseenter', function(){
+    containernavBar.style.opacity = 0.5;
+    containernavBar.style.display = 'block';
+    progressBar2.style.opacity = 0;
+})
+
+vid.addEventListener('mousemove', function(){
+       vid.style.cursor = 'auto';
+       moove = true;
+})
+
+// Fonctionnalité Stop
+stopButton.addEventListener('click', function(){
+    vid.pause();
+    vid.currentTime = 0;
+    playButton.src = './icon/play-1.png';
+    playing = false;
+});
+
+// Fonctionnalité avancer de 10s
+after.addEventListener('click', function(){
+    vid.currentTime += 10;
+});
+
+// Fonctionnalité reculer de 10s
+before.addEventListener('click', function(){
+    vid.currentTime -= 10;
+});
+
+// Si la vidéo n'est pas en fullscreen
+
+// Ajout de la fonctionnaité fullScreen
+fullscreen.addEventListener('click', function(){
+    if(fullscreenValue == false){
+    launchIntoFullscreen(document);
+    launchIntoFullscreen(document.documentElement);
+
+    moviePlayer.style.width = '100%';
+    moviePlayer.style.height = '100%';
+    moviePlayer.style.padding = 0;
+    moviePlayer.style.margin = 0;
+    vid.style.width = '100%';
+    containernavBar.style.width = '100%';
+    containernavBar.style.top = '93.5%';
+    progressBar.style.width = '100%';
+    progressBar2.style.width = '100%';
+    progressBar2.style.position = 'absolute';
+    progressBar2.style.bottom = 0;
+    // progressBar2.style.top = '100%';
+
+    fullscreenValue = true;
+    }
+
+    else {
+        if (document.exitFullscreen) {
+            document.exitFullscreen();
+        }
+        else if (document.mozCancelFullScreen) {
+            document.mozCancelFullScreen();
+        }
+        else if (document.webkitCancelFullScreen) {
+            document.webkitCancelFullScreen();
+        }
+        vid.style.width = '800px';
+        moviePlayer.style.width = '800px';
+        moviePlayer.style.height = 'auto';
+        moviePlayer.style.margin = '0px auto';
+        moviePlayer.style.marginTop = '7%';
+
+        progressBar.style.width = '690px';
+        progressBar2.style.width = '748px';
+        progressBar2.style.bottom = '24.5%';
+        containernavBar.style.width = '800px';
+        containernavBar.style.top = '500px';
+        if(vx>= 100) vx = 100;
+        fullscreenValue = false;
+        }
+});
+
+
+
+function launchIntoFullscreen(element) {
+    if(element.requestFullscreen) {
+      element.requestFullscreen();
+    } else if(element.mozRequestFullScreen) {
+      element.mozRequestFullScreen();
+    } else if(element.webkitRequestFullscreen) {
+      element.webkitRequestFullscreen();
+    } else if(element.msRequestFullscreen) {
+      element.msRequestFullscreen();
+    }
+  }
+
+  // Fonctionnalité vitesse
+
+
+    // Fonctionnalité Temps
+  setInterval(time, 1000);
+  function time(){
+
+  var filmDuration =  dureeFilm.split(":");
+  var filmMinutes = filmDuration[0];
+  var filmSeconds = filmDuration[1];
+  if(filmSeconds[1] == '' || filmSeconds[1] == null || filmSeconds[1] == undefined){
+      filmSeconds += 0;
+  }
+  // Durée totale film
+  var finalDuration = parseInt(filmMinutes)*60 + parseInt(filmSeconds);
+
+  // Durée actuelle du film
+  var currentTime = Math.floor(vid.currentTime);
+  var currentMinutes = Math.floor(currentTime/60);
+  var currentSeconds = Math.floor(currentTime % 60);
+  var currentSecondsString = currentSeconds.toString();
+  if(currentSecondsString[1] == null || currentSecondsString[1] == undefined || currentSecondsString[1] == '' ){
+      currentSecondsString = 0 + currentSecondsString;
+  }
+  document.getElementById('time').innerHTML = '<p>' + currentMinutes + ':'+ currentSecondsString  +'/'+ dureeFilm  + '</p>';
+
+  var remainingTime = finalDuration - currentTime;
+  var remainingMinutes = Math.floor(remainingTime/60);
+  var remainingSeconds = Math.floor(remainingTime % 60);
+
+  // ProgressBar
+  progressBar.max = finalDuration;
+  progressBar.value = currentTime;
+
+  var vvv = finalDuration-(currentSeconds+currentMinutes*60);
+  vx = finalDuration - vvv;
+  console.log('vvv : ' + vx)
+  if(vx >= 100 && fullscreenValue == true ) vx = 100;
+  myBar.style.width = vx+'%';
+  myBar2.style.width = vx+'%';
+
+  // Durée restante du film
+  // var remainingFinal = remainingMinutes + ':' + remainingSeconds;
+
+  }
+
+}
+
+// 2eme argument => chemin du film
+var p = new Player('movie', 1);

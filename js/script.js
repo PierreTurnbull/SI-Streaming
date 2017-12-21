@@ -525,6 +525,7 @@ fullscreen.addEventListener('click', function(){
       progressBar2.style.width = "100%";
       progressBar2.style.position = 'absolute';
       progressBar2.style.top = window.innerWidth * 0.56 - 2 + "px";
+      document.querySelector(".modal").style.overflow = "hidden";
 
       document.querySelector(".close_btn").style.display = "none";
       setTimeout(function()
@@ -533,7 +534,7 @@ fullscreen.addEventListener('click', function(){
         document.addEventListener('webkitfullscreenchange', exitHandler);
         document.addEventListener('mozfullscreenchange', exitHandler);
         document.addEventListener('MSFullscreenChange', exitHandler);
-      }, 1000);
+      }, 200);
       // progressBar2.style.top = '100%';
     }
 
@@ -564,6 +565,7 @@ fullscreen.addEventListener('click', function(){
           progressBar2.style.width = "100%";
           progressBar2.style.position = 'absolute';
           progressBar2.style.top = "653px";
+          document.querySelector(".modal").style.overflow = "scroll";
 
           document.querySelector(".close_btn").style.display = "block";
         if(vx>= 100) vx = 100;

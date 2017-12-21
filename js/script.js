@@ -658,4 +658,4 @@ fullscreen.addEventListener('click', function(){
   {
     load_films("See All", "", "");
   });
-}
+});

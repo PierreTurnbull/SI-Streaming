@@ -1,5 +1,5 @@
-//document.addEventListener("DOMContentLoaded", function()
-//{
+document.addEventListener("DOMContentLoaded", function()
+{
 
 // ANIMATIONS
   var logo       = document.querySelector('.logo');
@@ -575,86 +575,87 @@ fullscreen.addEventListener('click', function(){
       }
     });
 
-function launchIntoFullscreen(element) {
-    if(element.requestFullscreen) {
-      element.requestFullscreen();
-    } else if(element.mozRequestFullScreen) {
-      element.mozRequestFullScreen();
-    } else if(element.webkitRequestFullscreen) {
-      element.webkitRequestFullscreen();
-    } else if(element.msRequestFullscreen) {
-      element.msRequestFullscreen();
+  function launchIntoFullscreen(element) {
+      if(element.requestFullscreen) {
+        element.requestFullscreen();
+      } else if(element.mozRequestFullScreen) {
+        element.mozRequestFullScreen();
+      } else if(element.webkitRequestFullscreen) {
+        element.webkitRequestFullscreen();
+      } else if(element.msRequestFullscreen) {
+        element.msRequestFullscreen();
+      }
     }
-  }
 
-  // Fonctionnalité vitesse
-
-
-    // Fonctionnalité Temps
-  int = setInterval(time, 15);
-  function time(){
-
-    var filmDuration =  dureeFilm.split(":");
-    var filmMinutes = filmDuration[0];
-    var filmSeconds = filmDuration[1];
-    if(filmSeconds[1] == '' || filmSeconds[1] == null || filmSeconds[1] == undefined){
-        filmSeconds += 0;
-  }
-  // Durée totale film
-  var finalDuration = parseInt(filmMinutes)*60 + parseInt(filmSeconds);
-
-  // Durée actuelle du film
-  var currentTime = Math.floor(vid.currentTime);
-  var currentMinutes = Math.floor(currentTime/60);
-  var currentSeconds = Math.floor(currentTime % 60);
-  var currentSecondsString = currentSeconds.toString();
-  if(currentSecondsString[1] == null || currentSecondsString[1] == undefined || currentSecondsString[1] == '' ){
-      currentSecondsString = 0 + currentSecondsString;
-  }
-  document.getElementById('time').innerHTML = '<p>' + currentMinutes + ':'+ currentSecondsString  + ' / ' + dureeFilm  + '</p>';
-
-  var remainingTime = finalDuration - currentTime;
-  var remainingMinutes = Math.floor(remainingTime/60);
-  var remainingSeconds = Math.floor(remainingTime % 60);
-
-  // ProgressBar
-  progressBar.max = finalDuration;
-  progressBar.value = currentTime;
-
-  vx = (currentTime/finalDuration)*100;
-  if(vx >= 100 && fullscreenValue == true ) vx = 100;
-  myBar.style.width = vx+'%';
-  myBar2.style.width = vx+'%';
+    // Fonctionnalité vitesse
 
 
-  // Durée restante du film
-  // var remainingFinal = remainingMinutes + ':' + remainingSeconds;
+      // Fonctionnalité Temps
+    int = setInterval(time, 15);
+    function time(){
 
-    document.onkeydown = function(event)
-    {
-      if (event.keyCode == 39)
-        vid.currentTime += 10;
-      else if (event.keyCode == 37)
-        vid.currentTime -= 10;
-      else if (event.keyCode == 32)
+      var filmDuration =  dureeFilm.split(":");
+      var filmMinutes = filmDuration[0];
+      var filmSeconds = filmDuration[1];
+      if(filmSeconds[1] == '' || filmSeconds[1] == null || filmSeconds[1] == undefined){
+          filmSeconds += 0;
+    }
+    // Durée totale film
+    var finalDuration = parseInt(filmMinutes)*60 + parseInt(filmSeconds);
+
+    // Durée actuelle du film
+    var currentTime = Math.floor(vid.currentTime);
+    var currentMinutes = Math.floor(currentTime/60);
+    var currentSeconds = Math.floor(currentTime % 60);
+    var currentSecondsString = currentSeconds.toString();
+    if(currentSecondsString[1] == null || currentSecondsString[1] == undefined || currentSecondsString[1] == '' ){
+        currentSecondsString = 0 + currentSecondsString;
+    }
+    document.getElementById('time').innerHTML = '<p>' + currentMinutes + ':'+ currentSecondsString  + ' / ' + dureeFilm  + '</p>';
+
+    var remainingTime = finalDuration - currentTime;
+    var remainingMinutes = Math.floor(remainingTime/60);
+    var remainingSeconds = Math.floor(remainingTime % 60);
+
+    // ProgressBar
+    progressBar.max = finalDuration;
+    progressBar.value = currentTime;
+
+    vx = (currentTime/finalDuration)*100;
+    if(vx >= 100 && fullscreenValue == true ) vx = 100;
+    myBar.style.width = vx+'%';
+    myBar2.style.width = vx+'%';
+
+
+    // Durée restante du film
+    // var remainingFinal = remainingMinutes + ':' + remainingSeconds;
+
+      document.onkeydown = function(event)
       {
-        if (event.keyCode == 32)
-          event.preventDefault();
-        if(playing == false){
-          vid.play();
-        playButton.src ='./icon/pause.png';
-        playing = true;
-        }else {
-        vid.pause();
-        playButton.src ='./icon/play-1.png';
-        playing = false;
+        if (event.keyCode == 39)
+          vid.currentTime += 10;
+        else if (event.keyCode == 37)
+          vid.currentTime -= 10;
+        else if (event.keyCode == 32)
+        {
+          if (event.keyCode == 32)
+            event.preventDefault();
+          if(playing == false){
+            vid.play();
+          playButton.src ='./icon/pause.png';
+          playing = true;
+          }else {
+          vid.pause();
+          playButton.src ='./icon/play-1.png';
+          playing = false;
+          }
         }
       }
     }
   }
-}
 
-document.querySelector(".navitm").addEventListener("click", function()
-{
-  load_films("See All", "", "");
-});
+  document.querySelector(".navitm").addEventListener("click", function()
+  {
+    load_films("See All", "", "");
+  });
+}

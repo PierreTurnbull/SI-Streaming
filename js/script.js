@@ -179,6 +179,7 @@
     for (let i = 0; i < films_sel.length; i++) {
       films_sel[i].addEventListener('click', function(){
         display_modal(Number(films_sel[i].dataset.index));
+        Player("movie", Number(films_sel[i].dataset.index));
       });
     }
   }
@@ -332,15 +333,6 @@ function display_modal(index)
       play_video();
       scroll_top();
     });
-}
-
-for (let i = 0; i < films_sel.length; i++)
-{
-  films_sel[i].addEventListener("click", function()
-  {
-    display_modal(i);
-    Player("movie", i);
-  });
 }
 
 
@@ -572,7 +564,7 @@ function launchIntoFullscreen(element) {
   if(vx >= 100 && fullscreenValue == true ) vx = 100;
   myBar.style.width = vx+'%';
   myBar2.style.width = vx+'%';
-  console.log(currentTime)
+  console.log(currentTime);
 
   // Durée restante du film
   // var remainingFinal = remainingMinutes + ':' + remainingSeconds;

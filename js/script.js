@@ -559,12 +559,11 @@ function launchIntoFullscreen(element) {
   progressBar.max = finalDuration;
   progressBar.value = currentTime;
 
-  var vvv = finalDuration-currentTime;
-  vx = finalDuration - vvv;
+  vx = (currentTime/finalDuration)*100;
   if(vx >= 100 && fullscreenValue == true ) vx = 100;
   myBar.style.width = vx+'%';
   myBar2.style.width = vx+'%';
-  console.log(currentTime);
+
 
   // Durée restante du film
   // var remainingFinal = remainingMinutes + ':' + remainingSeconds;

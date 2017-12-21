@@ -25,13 +25,13 @@
   var films      = document.querySelectorAll('.film');
   var loadmore   = document.querySelector('.loadmore');
 
-  // logo.addEventListener('mouseenter', function() {
-  //   logo2.classList.add('on');
-  // });
-  //
-  // logo.addEventListener('mouseleave', function() {
-  //   logo2.classList.remove('on');
-  // });
+  logo.addEventListener('mouseenter', function() {
+    logo2.classList.add('on');
+  });
+
+  logo.addEventListener('mouseleave', function() {
+    logo2.classList.remove('on');
+  });
   //
   // logo2.addEventListener('mouseenter', function() {
   //   logo.classList.add('on');

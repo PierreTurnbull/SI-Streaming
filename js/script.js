@@ -261,7 +261,7 @@ function display_modal(index)
     '<div class="modal_player">' +
       '<img src="' + data.films[index].image_url + '" class="modal_player_img">' +
       '<img src="img/player_play_btn.png" title="Watch now!" class="modal_player_play">' +
-      '</div>' +
+    '</div>' +
     '<div class="modal_info">' +
       '<div class="modal_first_line">' +
         '<h2 class="modal_title">' + data.films[index].title + '</h2>' +
@@ -316,5 +316,6 @@ for (let i = 0; i < films_sel.length; i++)
   films_sel[i].addEventListener("click", function()
   {
     display_modal(i);
+    Player(i);
   });
 }

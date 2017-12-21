@@ -254,6 +254,7 @@ function display_modal(index)
     '<span class="close_btn_bar"></span>' +
     '<span class="close_btn_bar"></span>' +
   '</span>' +
+  '<div class="black_bg"></div>' +
   '<div class="modal_container">' +
     '<div class="modal_player">' +
     /* */
@@ -279,7 +280,6 @@ function display_modal(index)
       '<div id="progressBar2">' +
         '<div id="myBar2"></div>' +
       '</div>' +
-      '<div class="black_bg"></div>' +
       '<video id="movie"></video>' +
     '</div>' +
     /* */
@@ -470,25 +470,35 @@ fullscreen.addEventListener('click', function(){
     launchIntoFullscreen(document.documentElement);
 
     document.querySelector(".black_bg").style.display = "block";
-    moviePlayer.style.width = '100%';
-    moviePlayer.style.height = Number(moviePlayer.style.width) * (2 / 3);
-    moviePlayer.style.overflow = "hidden";
-    moviePlayer.style.padding = 0;
-    moviePlayer.style.margin = 0;
-    vid.style.width = '100%';
-    // vid.style.top = Number(moviePlayer.style.height) * ;
-    containernavBar.style.width = '100%';
-    containernavBar.style.top = '93.5%';
-    progressBar.style.width = '100%';
-    progressBar2.style.width = '100%';
-    progressBar2.style.position = 'absolute';
-    progressBar2.style.bottom =  "0";
-    // progressBar2.style.top = '100%';
+    document.querySelector(".black_bg").style.zIndex = "1";
+
+    window.onresize = function()
+    {
+      moviePlayer.style.position = "fixed";
+      moviePlayer.style.width = '100vw';
+      moviePlayer.style.height = Number(moviePlayer.style.width) * (2 / 3);
+      moviePlayer.style.overflow = "hidden";
+      moviePlayer.style.padding = 0;
+      moviePlayer.style.margin = 0;
+      moviePlayer.style.width = "100%";
+      moviePlayer.style.top = (window.innerHeight - (window.innerWidth * 0.56)) / 2 + "px";
+
+      vid.style.width = '100%';
+      // vid.style.top = Number(moviePlayer.style.height) * ;
+      containernavBar.style.width = '100%';
+      containernavBar.style.top = '91%';
+      progressBar.style.width = '100%';
+      progressBar2.style.width = '100%';
+      progressBar2.style.position = 'absolute';
+      progressBar2.style.top = (window.innerHeight - (window.innerWidth * 0.56)) / 2 + 650 + "px";
+      // progressBar2.style.top = '100%';
+    }
 
     fullscreenValue = true;
     }
 
     else {
+      window.onresize = null;
         if (document.exitFullscreen) {
             document.exitFullscreen();
         }

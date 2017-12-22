@@ -182,21 +182,11 @@
   border-bottom: solid 1px rgba(77, 181, 119, 0.8);
   width: 150px;
   height: 25px;
-  margin: 50px 0 0 5%;
+  margin: 10% auto;
   overflow: hidden;
   color: rgba(232, 235, 230, 0.9);
 }
 
-.year_container {
-  border: none;
-  border-bottom: solid 5px rgba(77, 181, 119, 0.8);
-  width: 150px;
-  height: 25px;
-  font-size: 13px;
-  margin: 5% auto;
-  overflow: hidden;
-  color: rgba(232, 235, 230, 0.9);
-}
 
 .catbutt, .yearbutt {
   display: inline-block;
@@ -271,6 +261,7 @@
 }
 
 .film_img {
+  object-fit: cover;
   width: 100%;
   height: 250px;
   box-shadow: 5px 5px 10px 1px rgba(0, 0, 0, .4);
@@ -304,6 +295,52 @@
   width: 100px;
   margin: -72px auto 30px auto;
   padding: 15px 0 0 0;
+}
+
+.footer {
+  display: flex;
+  width: 100%;
+  height: 110px;
+  background-color: #1e2326;
+  overflow: hidden;
+}
+
+.social_media {
+  width: 100px;
+  display: flex;
+  margin: 39px 0 0 10%;
+  display: none;
+}
+
+.trait {
+  margin: 30px 0 0 -13%;
+  background-color: white;
+  width: 2px;
+  height: 50px;
+}
+
+.lofoo {
+  margin-top: 34px;
+  width: 63%;
+  height: 102px;
+}
+
+.logo_footer {
+  margin: 0px 0 0 7%;
+}
+
+.text_footer {
+  color: white;
+  width: 90px;
+  font-size: 12px;
+  margin: 17px 0 0 42px;
+}
+
+.img_social {
+  width: 30px;
+  height: 30px;
+  margin-left: 50px;
+  display: none;
 }
 
 .modal {
@@ -641,6 +678,13 @@
     transform: rotate(-45deg) translate(3px, 2px);
     transition: ease 0.5s;
   }
+
+  .trait {
+    margin: 30px 0 0 20%;
+    background-color: white;
+    width: 2px;
+    height: 50px;
+  }
 }
 
 /* DESKTOP */
@@ -866,15 +910,10 @@
     left: 0;
     right: 0;
     margin: 0 auto;
+    height: 100px;
+    width: 100px;
   }
-  .modal_player_play {
-    cursor: pointer;
-    position: absolute;
-    top: 215px;
-    left: 0;
-    right: 0;
-    margin: 0 auto;
-  }
+
   .modal_first_line {}
   .modal_title {
     width: 600px;
@@ -899,9 +938,10 @@
     margin-top: 45px;
     display: flex;
   }
+
   .modal_rating_star_container {
     opacity: 0.7;
-    margin-left: 486px;
+    margin-left: 36%;
     width: 160px;
     height: 23px;
     display: flex;
@@ -989,13 +1029,14 @@
   }
 
   .social_media {
+    display: block;
     width: 100px;
     display: flex;
-    margin: 39px 0 0 10%;
+    margin: 47px 0 0 25%;
   }
 
   .trait {
-    margin: 30px 0 0 50%;
+    margin: 30px 0 0 32%;
     background-color: white;
     width: 2px;
     height: 50px;
@@ -1005,16 +1046,24 @@
     margin: 28px 0 0 7%;
   }
 
+  .lofoo {
+    margin-top: 10px;
+    width: 72%;
+    height: 102px;
+  }
+
   .text_footer {
+    width: 252px;
     color: white;
     font-size: 20px;
-    margin: 16px 0 0 59px;
+    margin: 19px 0 0 59px;
   }
 
   .img_social {
+    display: block;
     width: 30px;
     height: 30px;
-    margin-left: 50px;
+    /* margin-left: 50px; */
   }
 }
 
